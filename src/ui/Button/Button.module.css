@@ -1,0 +1,67 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  user-select: none;
+}
+
+.primary {
+  background: var(--color-blue);
+  color: var(--text-inverse);
+}
+
+.primary:hover {
+  background: var(--color-blue-dark);
+}
+
+.secondary {
+  background: var(--bg-primary);
+  color: var(--color-blue);
+  border: 1px solid var(--color-blue);
+}
+
+.secondary:hover {
+  background: var(--color-blue-light);
+}
+
+.success {
+  background: var(--color-green);
+  color: var(--text-inverse);
+}
+
+.error {
+  background: var(--color-red);
+  color: var(--text-inverse);
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.iconOnly {
+  padding: 0.75rem;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover:not(.disabled) {
+    box-shadow: var(--shadow-soft);
+  }
+}
