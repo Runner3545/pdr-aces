@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
       <body className={poppins.variable}>
         <PageWrapper>
           <Header />
+
           {children}
           <Footer />
         </PageWrapper>
