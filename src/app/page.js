@@ -9,7 +9,6 @@ export default function HomePage() {
 
   return (
     <div className={styles.page}>
-      {/* SECTION 1 — Paintless Dent Repair */}
       <section className={styles.section}>
         <div className={styles.container}>
           <Text as="h2" className={styles.title}>
@@ -21,7 +20,6 @@ export default function HomePage() {
             <Text as="p">{paintlessDentSection.paragraphTwo}</Text>
 
             <div className={styles.contentRow}>
-              {/* Left — Lists */}
               <div className={styles.leftColumn}>
                 <div>
                   <Text as="h4">{paintlessDentSection.listOne.list_name}</Text>
@@ -56,7 +54,6 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Right — Slider */}
               <div className={styles.rightColumn}>
                 <Slider
                   before="/paintlessDentRepair-before.jpg"
@@ -76,7 +73,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 2 — Auto Hail Repair (reversed layout for variety) */}
       <section className={styles.section}>
         <div className={styles.container}>
           <Text as="h2" className={styles.title}>
@@ -88,7 +84,6 @@ export default function HomePage() {
             <Text as="p">{autoHailRepairSection.paragraphTwo}</Text>
 
             <div className={`${styles.contentRow} ${styles.reverse}`}>
-              {/* Left — Slider */}
               <div className={styles.rightColumn}>
                 <Slider
                   before="/autoHailRepair-before.jpg"
@@ -98,7 +93,6 @@ export default function HomePage() {
                 />
               </div>
 
-              {/* Right — Lists */}
               <div className={styles.leftColumn}>
                 <div>
                   <Text as="h4">{autoHailRepairSection.listOne.list_name}</Text>
@@ -143,7 +137,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 3 — Learn More About the PDR Course */}
       <section className={styles.section}>
         <div className={styles.container}>
           <Text as="h2" className={styles.title}>
