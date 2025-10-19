@@ -1,10 +1,149 @@
 .footer {
-  text-align: center;
-  padding-top: 2rem;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--divider-color);
+  padding: 3rem 1rem;
 }
-.socials {
-  padding-top: 3rem;
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.badgesGrid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .badgesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .badgesGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.badgeLink {
+  text-decoration: none;
+}
+
+.badge {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  border: 1px solid var(--divider-color);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-strong);
+}
+
+.badgeLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.iconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #f3f4f6; /* neutral circle behind icons */
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.badgeTitle {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.badgeSubtitle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Right-side rating / stars */
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.starIcon svg {
+  display: block;
+}
+
+/* Soft brand-tinted backgrounds like in the screenshot */
+.badgeGoogle {
+  background: #f8fafc;
+}
+.badgeYelp {
+  background: #fdf3f3;
+}
+.badgeThumbtack {
+  background: #eef6ff;
+}
+.badgeGuaranteed {
+  background: #eefaf0;
+}
+.badgeEPA {
+  background: #f3f6ff;
+}
+
+/* Socials row */
+.socials {
+  margin-top: 2.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.socialBtn {
+  border: 1px solid var(--divider-color);
+  background: var(--color-white);
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.socialBtn:hover {
+  background: var(--bg-accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Keep original center text spacing */
+.footer :global(.Text) {
+  /* in case your <Text/> renders a .Text class */
 }
