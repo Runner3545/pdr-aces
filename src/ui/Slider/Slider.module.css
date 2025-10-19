@@ -1,12 +1,14 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 13 / 9;
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 566209c896b32d62196e89ad4fc305af3ad7ca5e
   user-select: none;
 }
 

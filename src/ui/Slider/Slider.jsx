@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from "react";
 import styles from "./Slider.module.css";
 
 /**
- * Before/After Image Comparison Slider
  * @param {string} before - URL of the "before" image
  * @param {string} after - URL of the "after" image
  * @param {string} [altBefore] - alt text for before image
@@ -20,7 +19,6 @@ export default function ImageCompareSlider({
   const [position, setPosition] = useState(50); // % between 0–100
   const [isDragging, setIsDragging] = useState(false);
 
-  // Helper to update slider position
   const updatePosition = (clientX) => {
     if (!wrapperRef.current) return;
     const bounds = wrapperRef.current.getBoundingClientRect();
@@ -30,7 +28,6 @@ export default function ImageCompareSlider({
     setPosition(percent);
   };
 
-  // Mouse + touch events
   const handleDown = (e) => {
     setIsDragging(true);
     updatePosition(e.clientX ?? e.touches[0].clientX);
@@ -43,7 +40,6 @@ export default function ImageCompareSlider({
 
   const handleUp = () => setIsDragging(false);
 
-  // Add global listeners for mouse/touch release
   useEffect(() => {
     window.addEventListener("mouseup", handleUp);
     window.addEventListener("touchend", handleUp);
