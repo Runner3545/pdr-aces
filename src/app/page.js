@@ -1,87 +1,173 @@
-// import Image from "next/image";
 import Link from "next/link";
-
-import { Icon, Button, Text } from "@/ui";
-import { ArrowRight } from "@/ui/icons";
+import { Icon, Button, Text, Slider } from "@/ui";
+import { ArrowRight, CheckCircle } from "@/ui/icons";
 import { texts } from "@/constants";
+import styles from "./page.module.css";
 
 export default function HomePage() {
+  const { paintlessDentSection, autoHailRepairSection, courseSection } = texts;
+
   return (
-    <div>
-      <Text as="h4">{texts.paintlessDentSection.title}</Text>
-      <Text as="p">{texts.paintlessDentSection.paragraphOne}</Text>
-      <Text as="p">{texts.paintlessDentSection.paragraphTwo}</Text>
+    <div className={styles.page}>
+      {/* SECTION 1 — Paintless Dent Repair */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <Text as="h2" className={styles.title}>
+            {paintlessDentSection.title}
+          </Text>
 
-      <Text as="h4">{texts.paintlessDentSection.listOne.list_name}</Text>
-      <Text>{texts.paintlessDentSection.listOne.list_textOne}</Text>
-      <Text>{texts.paintlessDentSection.listOne.list_textTwo}</Text>
-      <Text>{texts.paintlessDentSection.listOne.list_textThree}</Text>
-      <Text>{texts.paintlessDentSection.listOne.list_textFour}</Text>
+          <div className={styles.content}>
+            <Text as="p">{paintlessDentSection.paragraphOne}</Text>
+            <Text as="p">{paintlessDentSection.paragraphTwo}</Text>
 
-      <Text as="h4">{texts.paintlessDentSection.listTwo.list_name}</Text>
-      <Text>{texts.paintlessDentSection.listTwo.list_textOne}</Text>
-      <Text>{texts.paintlessDentSection.listTwo.list_textTwo}</Text>
-      <Text>{texts.paintlessDentSection.listTwo.list_textThree}</Text>
-      <Text>{texts.paintlessDentSection.listTwo.list_textFour}</Text>
+            <div className={styles.contentRow}>
+              {/* Left — Lists */}
+              <div className={styles.leftColumn}>
+                <div>
+                  <Text as="h4">{paintlessDentSection.listOne.list_name}</Text>
+                  <ul className={styles.list}>
+                    {[
+                      paintlessDentSection.listOne.list_textOne,
+                      paintlessDentSection.listOne.list_textTwo,
+                      paintlessDentSection.listOne.list_textThree,
+                      paintlessDentSection.listOne.list_textFour,
+                    ].map((item, i) => (
+                      <li key={i} className={styles.listItem}>
+                        <Icon
+                          as={CheckCircle}
+                          size="sm"
+                          strokeWidth={2}
+                          className={styles.icon}
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-      <Link href="/paintless-dent">
-        <Button icon={<Icon as={ArrowRight} />} variant="secondary">
-          {texts.default.button_link_title}
-        </Button>
-      </Link>
+                <div>
+                  <Text as="h4">{paintlessDentSection.listTwo.list_name}</Text>
+                  <ul className={styles.list}>
+                    <li>{paintlessDentSection.listTwo.list_textOne}</li>
+                    <li>{paintlessDentSection.listTwo.list_textTwo}</li>
+                    <li>{paintlessDentSection.listTwo.list_textThree}</li>
+                    <li>{paintlessDentSection.listTwo.list_textFour}</li>
+                  </ul>
+                </div>
+              </div>
 
-      <Text as="h4">{texts.autoHailRepairSection.title}</Text>
-      <Text>{texts.autoHailRepairSection.paragraphOne}</Text>
-      <Text>{texts.autoHailRepairSection.paragraphTwo}</Text>
+              {/* Right — Slider */}
+              <div className={styles.rightColumn}>
+                <Slider
+                  before="/paintlessDentRepair-before.jpg"
+                  after="/paintlessDentRepair-after.jpg"
+                  altBefore="Car dent before repair"
+                  altAfter="Car after paintless dent repair"
+                />
+              </div>
+            </div>
 
-      <Text>{texts.autoHailRepairSection.listOne.list_name}</Text>
-      <Text>{texts.autoHailRepairSection.listOne.list_textOne}</Text>
-      <Text>{texts.autoHailRepairSection.listOne.list_textTwo}</Text>
-      <Text>{texts.autoHailRepairSection.listOne.list_textThree}</Text>
-      <Text>{texts.autoHailRepairSection.listOne.list_textFour}</Text>
+            <Link href="/paintless-dent">
+              <Button icon={<Icon as={ArrowRight} />} variant="secondary">
+                {texts.default.button_link_title}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <Text>{texts.autoHailRepairSection.listTwo.list_name}</Text>
-      <Text>{texts.autoHailRepairSection.listTwo.list_textOne}</Text>
-      <Text>{texts.autoHailRepairSection.listTwo.list_textTwo}</Text>
-      <Text>{texts.autoHailRepairSection.listTwo.list_textThree}</Text>
-      <Text>{texts.autoHailRepairSection.listTwo.list_textFour}</Text>
+      {/* SECTION 2 — Auto Hail Repair (reversed layout for variety) */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <Text as="h2" className={styles.title}>
+            {autoHailRepairSection.title}
+          </Text>
 
-      <Text as="h4">{texts.courseSection.title}</Text>
-      <Text>{texts.courseSection.paragraphOne}</Text>
-      <Text>{texts.courseSection.paragraphTwo}</Text>
-      <Text>{texts.courseSection.paragraphThree}</Text>
+          <div className={styles.content}>
+            <Text as="p">{autoHailRepairSection.paragraphOne}</Text>
+            <Text as="p">{autoHailRepairSection.paragraphTwo}</Text>
 
-      <Link href="/auto-hail-repair">
-        <Button icon={<Icon as={ArrowRight} />} variant="secondary">
-          {texts.default.button_link_title}
-        </Button>
-      </Link>
+            <div className={`${styles.contentRow} ${styles.reverse}`}>
+              {/* Left — Slider */}
+              <div className={styles.rightColumn}>
+                <Slider
+                  before="/autoHailRepair-before.jpg"
+                  after="/autoHailRepair-after.jpg"
+                  altBefore="Car before hail repair"
+                  altAfter="Car after hail repair"
+                />
+              </div>
 
-      <Text as="h4">{texts.courseSection.title}</Text>
-      <Text>{texts.courseSection.paragraphOne}</Text>
-      <Text>{texts.courseSection.paragraphTwo}</Text>
-      <Text>{texts.courseSection.paragraphThree}</Text>
+              {/* Right — Lists */}
+              <div className={styles.leftColumn}>
+                <div>
+                  <Text as="h4">{autoHailRepairSection.listOne.list_name}</Text>
+                  <ul className={styles.list}>
+                    {[
+                      autoHailRepairSection.listOne.list_textOne,
+                      autoHailRepairSection.listOne.list_textTwo,
+                      autoHailRepairSection.listOne.list_textThree,
+                      autoHailRepairSection.listOne.list_textFour,
+                    ].map((item, i) => (
+                      <li key={i} className={styles.listItem}>
+                        <Icon
+                          as={CheckCircle}
+                          size="sm"
+                          strokeWidth={2}
+                          className={styles.icon}
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-      <Text>{texts.courseSection.listOne.list_name}</Text>
-      <Text>{texts.courseSection.listOne.list_textOne}</Text>
-      <Text>{texts.courseSection.listOne.list_textTwo}</Text>
+                <div>
+                  <Text as="h4">{autoHailRepairSection.listTwo.list_name}</Text>
+                  <ul className={styles.list}>
+                    <li>{autoHailRepairSection.listTwo.list_textOne}</li>
+                    <li>{autoHailRepairSection.listTwo.list_textTwo}</li>
+                    <li>{autoHailRepairSection.listTwo.list_textThree}</li>
+                    <li>{autoHailRepairSection.listTwo.list_textFour}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
 
-      <Text>{texts.courseSection.paragraphFour}</Text>
-      <Text>{texts.courseSection.paragraphFive}</Text>
+            <Link href="/auto-hail-repair">
+              <Button icon={<Icon as={ArrowRight} />} variant="secondary">
+                {texts.default.button_link_title}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <Text as="h4">{texts.bottomSection.title}</Text>
-      <Text>{texts.bottomSection.paragraphOne}</Text>
-      <Text>{texts.bottomSection.paragraphTwo}</Text>
-      <Text>{texts.bottomSection.paragraphThree}</Text>
+      {/* SECTION 3 — Learn More About the PDR Course */}
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <Text as="h2" className={styles.title}>
+            {courseSection.title}
+          </Text>
 
-      {/* <Image
-        className={styles.logo}
-        src="/next.svg"
-        alt="Next.js logo"
-        width={180}
-        height={38}
-        priority
-      />  */}
+          <div className={styles.content}>
+            <Text>{courseSection.paragraphOne}</Text>
+            <Text>{courseSection.paragraphTwo}</Text>
+            <Text>{courseSection.paragraphThree}</Text>
+
+            <div className={styles.listBlock}>
+              <Text as="h4">{courseSection.listOne.list_name}</Text>
+              <ul className={styles.list}>
+                <li>{courseSection.listOne.list_textOne}</li>
+                <li>{courseSection.listOne.list_textTwo}</li>
+              </ul>
+            </div>
+
+            <Text>{courseSection.paragraphFour}</Text>
+            <Text>{courseSection.paragraphFive}</Text>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
