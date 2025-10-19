@@ -1,166 +1,121 @@
 import Link from "next/link";
-import { Icon, Button, Text, Slider } from "@/ui";
-import { ArrowRight, CheckCircle } from "@/ui/icons";
+import { Icon, Button, Text, Slider, Section, Container } from "@/ui";
+import { ArrowRight } from "@/ui/icons";
 import { texts } from "@/constants";
 import styles from "./page.module.css";
+import { navigationLinks } from "@/constants/navigation";
 
 export default function HomePage() {
   const { paintlessDentSection, autoHailRepairSection, courseSection } = texts;
 
   return (
-    <div className={styles.page}>
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <Text as="h2" className={styles.title}>
+    <>
+      <Section id="section-paintless-dent-repair">
+        <Container>
+          <Text as="h2" className={styles.title} weight="bold">
             {paintlessDentSection.title}
           </Text>
-
           <div className={styles.content}>
-            <Text as="p">{paintlessDentSection.paragraphOne}</Text>
-            <Text as="p">{paintlessDentSection.paragraphTwo}</Text>
-
             <div className={styles.contentRow}>
-              <div className={styles.leftColumn}>
-                <div>
-                  <Text as="h4">{paintlessDentSection.listOne.list_name}</Text>
-                  <ul className={styles.list}>
-                    {[
-                      paintlessDentSection.listOne.list_textOne,
-                      paintlessDentSection.listOne.list_textTwo,
-                      paintlessDentSection.listOne.list_textThree,
-                      paintlessDentSection.listOne.list_textFour,
-                    ].map((item, i) => (
-                      <li key={i} className={styles.listItem}>
-                        <Icon
-                          as={CheckCircle}
-                          size="sm"
-                          strokeWidth={2}
-                          className={styles.icon}
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <Text as="h4">{paintlessDentSection.listTwo.list_name}</Text>
-                  <ul className={styles.list}>
-                    <li>{paintlessDentSection.listTwo.list_textOne}</li>
-                    <li>{paintlessDentSection.listTwo.list_textTwo}</li>
-                    <li>{paintlessDentSection.listTwo.list_textThree}</li>
-                    <li>{paintlessDentSection.listTwo.list_textFour}</li>
-                  </ul>
+              <div className={`${styles.leftColumn} ${styles.stack}`}>
+                <Text
+                  as="p"
+                  className={`${styles.lede} ${styles.measure}`}
+                  weight="medium"
+                >
+                  {paintlessDentSection.paragraphOne}
+                </Text>
+                <Text as="p" className={styles.measure}>
+                  {paintlessDentSection.paragraphTwo}
+                </Text>
+                <div className={styles.ctaRow}>
+                  <Link href={navigationLinks.paintlessDent}>
+                    <Button icon={<Icon as={ArrowRight} />} variant="secondary">
+                      {texts.default.button_link_title}
+                    </Button>
+                  </Link>
                 </div>
               </div>
-
               <div className={styles.rightColumn}>
                 <Slider
                   before="/paintlessDentRepair-before.jpg"
                   after="/paintlessDentRepair-after.jpg"
-                  altBefore="Car dent before repair"
-                  altAfter="Car after paintless dent repair"
+                  altBefore="Door dent before repair"
+                  altAfter="Door panel after paintless dent repair—like new"
                 />
               </div>
             </div>
-
-            <Link href="/paintless-dent">
-              <Button icon={<Icon as={ArrowRight} />} variant="secondary">
-                {texts.default.button_link_title}
-              </Button>
-            </Link>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <Text as="h2" className={styles.title}>
+      <Section id="section-auto-hail-repair">
+        <Container>
+          <Text as="h2" className={styles.title} weight="bold">
             {autoHailRepairSection.title}
           </Text>
-
           <div className={styles.content}>
-            <Text as="p">{autoHailRepairSection.paragraphOne}</Text>
-            <Text as="p">{autoHailRepairSection.paragraphTwo}</Text>
-
             <div className={`${styles.contentRow} ${styles.reverse}`}>
+              <div className={`${styles.leftColumn} ${styles.stack}`}>
+                <Text
+                  as="p"
+                  className={`${styles.lede} ${styles.measure}`}
+                  weight="medium"
+                >
+                  {autoHailRepairSection.paragraphOne}
+                </Text>
+                <Text as="p" className={styles.measure}>
+                  {autoHailRepairSection.paragraphTwo}
+                </Text>
+                <div className={styles.ctaRow}>
+                  <Link href={navigationLinks.autoHailRepair}>
+                    <Button icon={<Icon as={ArrowRight} />} variant="secondary">
+                      {texts.default.button_link_title}
+                    </Button>
+                  </Link>
+                </div>
+              </div>
               <div className={styles.rightColumn}>
                 <Slider
                   before="/autoHailRepair-before.jpg"
                   after="/autoHailRepair-after.jpg"
-                  altBefore="Car before hail repair"
-                  altAfter="Car after hail repair"
+                  altBefore="Roof and hood with hail dents"
+                  altAfter="Panels restored after hail repair"
                 />
               </div>
-
-              <div className={styles.leftColumn}>
-                <div>
-                  <Text as="h4">{autoHailRepairSection.listOne.list_name}</Text>
-                  <ul className={styles.list}>
-                    {[
-                      autoHailRepairSection.listOne.list_textOne,
-                      autoHailRepairSection.listOne.list_textTwo,
-                      autoHailRepairSection.listOne.list_textThree,
-                      autoHailRepairSection.listOne.list_textFour,
-                    ].map((item, i) => (
-                      <li key={i} className={styles.listItem}>
-                        <Icon
-                          as={CheckCircle}
-                          size="sm"
-                          strokeWidth={2}
-                          className={styles.icon}
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <Text as="h4">{autoHailRepairSection.listTwo.list_name}</Text>
-                  <ul className={styles.list}>
-                    <li>{autoHailRepairSection.listTwo.list_textOne}</li>
-                    <li>{autoHailRepairSection.listTwo.list_textTwo}</li>
-                    <li>{autoHailRepairSection.listTwo.list_textThree}</li>
-                    <li>{autoHailRepairSection.listTwo.list_textFour}</li>
-                  </ul>
-                </div>
-              </div>
             </div>
-
-            <Link href="/auto-hail-repair">
-              <Button icon={<Icon as={ArrowRight} />} variant="secondary">
-                {texts.default.button_link_title}
-              </Button>
-            </Link>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className={styles.section}>
-        <div className={styles.container}>
-          <Text as="h2" className={styles.title}>
+      <Section id="section-pdr-course">
+        <Container>
+          <Text as="h2" className={styles.title} weight="bold">
             {courseSection.title}
           </Text>
-
-          <div className={styles.content}>
-            <Text>{courseSection.paragraphOne}</Text>
-            <Text>{courseSection.paragraphTwo}</Text>
-            <Text>{courseSection.paragraphThree}</Text>
-
-            <div className={styles.listBlock}>
-              <Text as="h4">{courseSection.listOne.list_name}</Text>
-              <ul className={styles.list}>
-                <li>{courseSection.listOne.list_textOne}</li>
-                <li>{courseSection.listOne.list_textTwo}</li>
-              </ul>
+          <div className={`${styles.content} ${styles.centered}`}>
+            <div className={styles.stack}>
+              <Text
+                as="p"
+                className={`${styles.lede} ${styles.measure}`}
+                weight="medium"
+              >
+                {courseSection.paragraphOne}
+              </Text>
+              <Text as="p" className={styles.measure}>
+                {courseSection.paragraphTwo}
+              </Text>
             </div>
-
-            <Text>{courseSection.paragraphFour}</Text>
-            <Text>{courseSection.paragraphFive}</Text>
+            <div className={styles.ctaRow}>
+              <Link href={navigationLinks.pdrCourse}>
+                <Button icon={<Icon as={ArrowRight} />} variant="secondary">
+                  {texts.default.button_link_title}
+                </Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </Container>
+      </Section>
+    </>
   );
 }
