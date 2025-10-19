@@ -5,3 +5,4 @@ export { default as Slider } from "./Slider";
 export { default as Icon } from "./Icon";
 export { default as Section } from "./Section";
 export { default as Container } from "./Container";
+export { default as YelpIcon } from "./custom-icons";

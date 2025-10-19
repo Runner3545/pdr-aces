@@ -1,149 +1,148 @@
 .footer {
-  background: var(--bg-primary);
-
-  padding: 3rem 1rem;
-}
-
-.container {
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-.badgesGrid {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.875rem;
-}
-
-@media (min-width: 640px) {
-  .badgesGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 900px) {
-  .badgesGrid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-.badgeLink {
-  text-decoration: none;
-}
-
-.badge {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-lg);
-  background: var(--color-white);
-  border: 1px solid var(--divider-color);
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.badge:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-strong);
-}
-
-.badgeLeft {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  min-width: 0;
-}
-
-.iconWrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: #f3f4f6; /* neutral circle behind icons */
-}
-
-.badgeText {
+  background-color: #ffffff;
+  color: #111;
+  padding: 3rem 2rem 1rem;
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
-}
-
-.badgeTitle {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.badgeSubtitle {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-/* Right-side rating / stars */
-.rating {
-  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-}
-.stars {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-}
-.starIcon svg {
-  display: block;
+  border-top: 2px solid #e0e0e0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Soft brand-tinted backgrounds like in the screenshot */
-.badgeGoogle {
-  background: #f8fafc;
-}
-.badgeYelp {
-  background: #fdf3f3;
-}
-.badgeThumbtack {
-  background: #eef6ff;
-}
-.badgeGuaranteed {
-  background: #eefaf0;
-}
-.badgeEPA {
-  background: #f3f6ff;
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 2rem;
 }
 
-/* Socials row */
-.socials {
-  margin-top: 2.25rem;
+.socialLinks {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.socialItem {
+  display: flex;
+  align-items: center;
   justify-content: center;
-}
-
-.socialBtn {
-  border: 1px solid var(--divider-color);
-  background: var(--color-white);
-  padding: 0.5rem 0.9rem;
-  border-radius: var(--radius-md);
+  gap: 0.6rem;
+  width: 170px;
+  height: 60px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
   text-decoration: none;
-  color: var(--text-primary);
+  text-transform: capitalize;
+  color: rgb(255, 255, 255);
+  background-color: #f9f9f9;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.socialItem:hover {
+  transform: scale(1.04);
+}
+.icon {
+  width: 22px;
+  height: 22px;
+}
+
+.instagram {
+  background: linear-gradient(45deg, #f1c07a, #c0628a, #7a69c4);
+}
+.instagram:hover {
+  background: linear-gradient(45deg, #f1c07a, #c0628a, #7a69c4);
+}
+
+.tiktok {
+  background: linear-gradient(45deg, #222222, #cc4c70);
+}
+.tiktok:hover {
+  background: linear-gradient(45deg, #222222, #cc4c70);
+}
+
+.facebook {
+  background-color: #4d7cd5;
+}
+.facebook:hover {
+  background-color: #4d7cd5;
+}
+
+.youtube {
+  background-color: #b72a2a;
+}
+.youtube:hover {
+  background-color: #b72a2a;
+}
+
+.yelp {
+  background-color: #a74a4a;
+}
+.yelp:hover {
+  background-color: #a74a4a;
+}
+
+.socialItem:hover {
+  filter: brightness(1.15);
+}
+
+.quickLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  align-items: flex-end;
+}
+
+.link {
+  display: inline-block;
+  width: 180px;
+  padding: 0.6rem;
+  border: 2px solid #111;
+  border-radius: 6px;
+  text-align: center;
+  color: #111;
+  text-decoration: none;
   font-weight: 500;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: var(--shadow-soft);
+  transition: all 0.25s ease;
 }
 
-.socialBtn:hover {
-  background: var(--bg-accent);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-strong);
+.link:hover {
+  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #111;
 }
 
-/* Keep original center text spacing */
-.footer :global(.Text) {
-  /* in case your <Text/> renders a .Text class */
+.footerBottom {
+  width: 100%;
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .footerContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+
+  .quickLinks {
+    align-items: center;
+  }
+
+  .link {
+    width: 160px;
+  }
 }

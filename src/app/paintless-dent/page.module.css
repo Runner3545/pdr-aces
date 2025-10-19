@@ -1,7 +1,6 @@
 .list {
-  margin: 0.5rem 0 0 0;
   padding: 0;
-  list-style: none; /* Disable default bullets */
+  list-style: none;
   color: var(--text-secondary);
 }
 .listItem {
@@ -16,9 +15,15 @@
   margin-top: 2px;
 }
 
+.listContainer {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
 .sliderContainer {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
   gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   margin-top: 2rem;
 }

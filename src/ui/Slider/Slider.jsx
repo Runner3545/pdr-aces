@@ -16,7 +16,7 @@ export default function ImageCompareSlider({
   altAfter = "After image",
 }) {
   const wrapperRef = useRef(null);
-  const [position, setPosition] = useState(50); // % between 0–100
+  const [position, setPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
 
   const updatePosition = (clientX) => {
@@ -59,10 +59,8 @@ export default function ImageCompareSlider({
       onMouseDown={handleDown}
       onTouchStart={handleDown}
     >
-      {/* Before image */}
       <img src={before} alt={altBefore} className={styles.beforeImage} />
 
-      {/* After image (clipped dynamically) */}
       <div
         className={styles.afterWrapper}
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
