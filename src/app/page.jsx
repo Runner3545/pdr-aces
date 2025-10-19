@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Icon, Button, Text, Slider, Section, Container } from "@/ui";
 import { ArrowRight } from "@/ui/icons";
@@ -15,9 +17,13 @@ export default function HomePage() {
           <Text as="h2" className={styles.title} weight="bold">
             {paintlessDentSection.title}
           </Text>
+
           <div className={styles.content}>
             <div className={styles.contentRow}>
-              <div className={`${styles.leftColumn} ${styles.stack}`}>
+              <div
+                className={`${styles.leftColumn} ${styles.stack}`}
+                data-reveal
+              >
                 <Text
                   as="p"
                   className={`${styles.lede} ${styles.measure}`}
@@ -28,15 +34,21 @@ export default function HomePage() {
                 <Text as="p" className={styles.measure}>
                   {paintlessDentSection.paragraphTwo}
                 </Text>
+
                 <div className={styles.ctaRow}>
                   <Link href={navigationLinks.paintlessDent}>
-                    <Button icon={<Icon as={ArrowRight} />} variant="secondary">
+                    <Button
+                      icon={<Icon as={ArrowRight} />}
+                      variant="secondary"
+                      data-reveal
+                    >
                       {texts.default.button_link_title}
                     </Button>
                   </Link>
                 </div>
               </div>
-              <div className={styles.rightColumn}>
+
+              <div className={styles.rightColumn} data-reveal>
                 <Slider
                   before="/paintlessDentRepair-before.jpg"
                   after="/paintlessDentRepair-after.jpg"
@@ -54,9 +66,13 @@ export default function HomePage() {
           <Text as="h2" className={styles.title} weight="bold">
             {autoHailRepairSection.title}
           </Text>
+
           <div className={styles.content}>
             <div className={`${styles.contentRow} ${styles.reverse}`}>
-              <div className={`${styles.leftColumn} ${styles.stack}`}>
+              <div
+                className={`${styles.leftColumn} ${styles.stack}`}
+                data-reveal
+              >
                 <Text
                   as="p"
                   className={`${styles.lede} ${styles.measure}`}
@@ -67,15 +83,21 @@ export default function HomePage() {
                 <Text as="p" className={styles.measure}>
                   {autoHailRepairSection.paragraphTwo}
                 </Text>
+
                 <div className={styles.ctaRow}>
                   <Link href={navigationLinks.autoHailRepair}>
-                    <Button icon={<Icon as={ArrowRight} />} variant="secondary">
+                    <Button
+                      icon={<Icon as={ArrowRight} />}
+                      variant="secondary"
+                      data-reveal
+                    >
                       {texts.default.button_link_title}
                     </Button>
                   </Link>
                 </div>
               </div>
-              <div className={styles.rightColumn}>
+
+              <div className={styles.rightColumn} data-reveal>
                 <Slider
                   before="/autoHailRepair-before.jpg"
                   after="/autoHailRepair-after.jpg"
@@ -93,8 +115,13 @@ export default function HomePage() {
           <Text as="h2" className={styles.title} weight="bold">
             {courseSection.title}
           </Text>
+
           <div className={`${styles.content} ${styles.centered}`}>
-            <div className={styles.stack}>
+            <div
+              className={styles.stack}
+              data-reveal
+              style={{ "--delay": "80ms" }}
+            >
               <Text
                 as="p"
                 className={`${styles.lede} ${styles.measure}`}
@@ -106,9 +133,15 @@ export default function HomePage() {
                 {courseSection.paragraphTwo}
               </Text>
             </div>
+
             <div className={styles.ctaRow}>
               <Link href={navigationLinks.pdrCourse}>
-                <Button icon={<Icon as={ArrowRight} />} variant="secondary">
+                <Button
+                  icon={<Icon as={ArrowRight} />}
+                  variant="secondary"
+                  data-reveal
+                  style={{ "--delay": "120ms" }}
+                >
                   {texts.default.button_link_title}
                 </Button>
               </Link>

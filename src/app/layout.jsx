@@ -1,10 +1,11 @@
 import { Poppins } from "next/font/google";
-import { Footer, Header, SectionPager } from "@/components";
+import { Footer, Header } from "@/components";
 import { PageWrapper } from "@/ui";
 
 import "../styles/variables.css";
 import "../styles/reset.css";
 import "../styles/globals.css";
+import "../styles/paged-scroller.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,9 +24,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.variable}>
         <Header />
-        {/* <SectionPager headerSelector="header" delayMs={140} duration={0.8}> */}
+
         {children}
-        {/* </SectionPager> */}
 
         <Footer />
       </body>

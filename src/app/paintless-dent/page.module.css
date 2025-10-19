@@ -1,8 +1,49 @@
+/* Title spacing identical to Home */
+.title {
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* Columnar flow + consistent vertical rhythm like Home */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* matches Home .content gap */
+}
+
+/* Row spacing matches Home .contentRow */
+.contentRow {
+  display: grid;
+  gap: 2.5rem; /* same as Home .contentRow gap */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+  margin-top: 1.25rem; /* same top margin as Home .contentRow */
+}
+
+/* Stack helper matches Home .stack (without explicit gap) */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+/* List block margins match Home .listBlock */
+.listBlock {
+  margin: 1rem 0;
+}
+
+/* Lists match Home list styles */
 .list {
+  margin: 0.5rem 0 0 0;
   padding: 0;
   list-style: none;
   color: var(--text-secondary);
 }
+
+.list li {
+  margin: 0.4rem 0; /* same as Home */
+  line-height: 1.6;
+}
+
 .listItem {
   display: flex;
   align-items: center;
@@ -15,15 +56,21 @@
   margin-top: 2px;
 }
 
-.listContainer {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
+/* Slider grid with Home-like spacing above */
 .sliderContainer {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  margin-top: 2rem;
+  margin-top: 1.25rem; /* align with Home section spacing */
+}
+
+/* Responsive tweaks aligned with Home */
+@media (max-width: 768px) {
+  .title {
+    text-align: center;
+  }
+  .contentRow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem; /* tighten on mobile like Home does by stacking */
+  }
 }

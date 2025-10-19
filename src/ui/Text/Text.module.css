@@ -1,3 +1,4 @@
+/* === Base text styling === */
 .text {
   margin: 0;
   color: var(--text-primary);
@@ -5,6 +6,7 @@
   line-height: 1.5;
 }
 
+/* === Headings === */
 .h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
@@ -28,6 +30,7 @@
   font-weight: 600;
 }
 
+/* === Paragraphs & small text === */
 .p {
   font-size: 1rem;
   line-height: 1.6;
@@ -39,6 +42,7 @@
   color: var(--text-secondary);
 }
 
+/* === Weights === */
 .weight-light {
   font-weight: 300;
 }
@@ -51,6 +55,7 @@
   font-weight: 700;
 }
 
+/* === Alignment === */
 .align-left {
   text-align: left;
 }
@@ -63,6 +68,7 @@
   text-align: right;
 }
 
+/* === Colors === */
 .color-primary {
   color: var(--text-primary);
 }
@@ -74,3 +80,19 @@
 .color-inverse {
   color: var(--text-inverse);
 }
+
+/* === Animation helpers === */
+.char {
+  display: inline-block;
+}
+
+.word {
+  white-space: normal;
+  display: inline-block;
+}
+
+.willAnimate {
+  /* optional hook class if needed later */
+}
+
+/* no opacity:0 here → text always visible even if JS fails */

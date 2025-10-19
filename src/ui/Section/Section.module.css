@@ -1,22 +1,23 @@
 .section {
   width: 100%;
-  min-height: calc(100svh - 88px); /* full screen minus fixed header */
-  padding-top: 88px; /* ensure content isn't hidden behind header */
+
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  align-items: center; /* center your content vertically */
+  justify-content: center; /* center horizontally */
+  padding: 2rem;
   box-sizing: border-box;
   transition: background-color 0.4s ease, color 0.4s ease;
-  background-color: #fff;
+  background-color: var(--bg-primary);
 }
 
-/* Optional: per your design */
+/* keep your spacing version for normal pages if needed */
+.section.padded {
+  min-height: auto;
+  padding: 4rem 0;
+}
 
 @media (max-width: 768px) {
   .section {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1.5rem;
   }
 }

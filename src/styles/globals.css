@@ -28,7 +28,3 @@ a {
     color-scheme: dark;
   }
 }
-.section {
-  min-height: calc(100vh - 88px);
-  padding-top: 88px; /* optional if you want header space visible */
-}

@@ -1,12 +1,9 @@
+"use client";
+
 import styles from "./Footer.module.css";
 import { texts } from "@/constants";
 import { Text } from "@/ui";
-import {
-  Instagram,
-  Facebook,
-  Youtube,
-  Music2, // TikTok
-} from "lucide-react";
+import { Instagram, Facebook, Youtube, Music2 } from "lucide-react";
 import YelpIcon from "@/ui/custom-icons/Yelp";
 import Link from "next/link";
 import { navigationMenu } from "@/constants/navigation";
@@ -73,14 +70,14 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* --- Navigation Links --- */}
-        <div className={styles.quickLinks}>
+        {/* --- Navigation Links (minimal) --- */}
+        <nav className={styles.quickLinks} aria-label="Quick links">
           {navigationMenu.map((item) => (
             <Link key={item.link} href={item.link} className={styles.link}>
               {item.title}
             </Link>
           ))}
-        </div>
+        </nav>
       </div>
 
       {/* --- Bottom Text --- */}

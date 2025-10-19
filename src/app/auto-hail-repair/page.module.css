@@ -1,8 +1,49 @@
+/* Same rhythm as HomePage */
+.title {
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+/* Vertical spacing flow */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Row layout — same as Home’s .contentRow */
+.contentRow {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+  margin-top: 1.25rem;
+}
+
+/* Stack for grouped blocks */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+/* List block margin identical to Home */
+.listBlock {
+  margin: 1rem 0;
+}
+
+/* List styling */
 .list {
+  margin: 0.5rem 0 0 0;
   padding: 0;
   list-style: none;
   color: var(--text-secondary);
 }
+
+.list li {
+  margin: 0.4rem 0;
+  line-height: 1.6;
+}
+
 .listItem {
   display: flex;
   align-items: center;
@@ -15,14 +56,22 @@
   margin-top: 2px;
 }
 
-.listContainer {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
+/* Slider grid */
 .sliderContainer {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  margin-top: 2rem;
+  margin-top: 1.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    text-align: center;
+  }
+
+  .contentRow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 }
