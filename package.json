@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "serve out"
+    "postbuild": "node scripts/prefix-paths.js"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
