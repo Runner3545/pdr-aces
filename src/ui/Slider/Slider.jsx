@@ -2,15 +2,8 @@
 
 import { useRef, useState, useEffect } from "react";
 import styles from "./Slider.module.css";
-
 import Image from "next/image";
 
-/**
- * @param {string} before - URL of the "before" image
- * @param {string} after - URL of the "after" image
- * @param {string} [altBefore] - alt text for before image
- * @param {string} [altAfter] - alt text for after image
- */
 export default function ImageCompareSlider({
   before,
   after,
@@ -18,35 +11,51 @@ export default function ImageCompareSlider({
   altAfter = "After image",
 }) {
   const wrapperRef = useRef(null);
-  const [position, setPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
+  const afterRef = useRef(null);
+  const sliderRef = useRef(null);
+  const isDraggingRef = useRef(false);
+  const positionRef = useRef(50);
+  const [_, forceRender] = useState(0);
 
   const updatePosition = (clientX) => {
-    if (!wrapperRef.current) return;
-    const bounds = wrapperRef.current.getBoundingClientRect();
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    const bounds = wrapper.getBoundingClientRect();
     let x = clientX - bounds.left;
     x = Math.max(0, Math.min(x, bounds.width));
     const percent = (x / bounds.width) * 100;
-    setPosition(percent);
+    positionRef.current = percent;
+    requestAnimationFrame(() => {
+      if (afterRef.current && sliderRef.current) {
+        afterRef.current.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+        sliderRef.current.style.left = `${percent}%`;
+      }
+    });
   };
 
   const handleDown = (e) => {
-    setIsDragging(true);
+    isDraggingRef.current = true;
     updatePosition(e.clientX ?? e.touches[0].clientX);
   };
 
   const handleMove = (e) => {
-    if (!isDragging) return;
+    if (!isDraggingRef.current) return;
     updatePosition(e.clientX ?? e.touches[0].clientX);
   };
 
-  const handleUp = () => setIsDragging(false);
+  const handleUp = () => {
+    isDraggingRef.current = false;
+  };
 
   useEffect(() => {
+    window.addEventListener("mousemove", handleMove);
     window.addEventListener("mouseup", handleUp);
+    window.addEventListener("touchmove", handleMove);
     window.addEventListener("touchend", handleUp);
     return () => {
+      window.removeEventListener("mousemove", handleMove);
       window.removeEventListener("mouseup", handleUp);
+      window.removeEventListener("touchmove", handleMove);
       window.removeEventListener("touchend", handleUp);
     };
   }, []);
@@ -55,9 +64,6 @@ export default function ImageCompareSlider({
     <div
       ref={wrapperRef}
       className={styles.imageWrapper}
-      style={{ width: "100%" }}
-      onMouseMove={handleMove}
-      onTouchMove={handleMove}
       onMouseDown={handleDown}
       onTouchStart={handleDown}
     >
@@ -67,11 +73,12 @@ export default function ImageCompareSlider({
         src={before}
         alt={altBefore}
         className={styles.beforeImage}
+        draggable={false}
       />
-
       <div
+        ref={afterRef}
         className={styles.afterWrapper}
-        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+        style={{ clipPath: `inset(0 50% 0 0)` }}
       >
         <Image
           width={800}
@@ -79,16 +86,10 @@ export default function ImageCompareSlider({
           src={after}
           alt={altAfter}
           className={styles.afterImage}
+          draggable={false}
         />
       </div>
-
-      {/* Slider line and handle */}
-      <div
-        className={styles.slider}
-        style={{ left: `${position}%` }}
-        onMouseDown={handleDown}
-        onTouchStart={handleDown}
-      >
+      <div ref={sliderRef} className={styles.slider} style={{ left: "50%" }}>
         <div className={styles.handle} />
       </div>
     </div>
