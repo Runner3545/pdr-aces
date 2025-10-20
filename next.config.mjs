@@ -3,7 +3,7 @@ const isProd = process.env.NODE_ENV === "production";
 const repo = "pdr-aces";
 
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   output: "export",
 
   basePath: isProd ? `/${repo}` : "",
@@ -13,3 +13,5 @@ module.exports = {
 
   trailingSlash: true,
 };
+
+export default nextConfig;
