@@ -6,6 +6,7 @@ import { ArrowRight } from "@/ui/icons";
 import { texts } from "@/constants";
 import styles from "./page.module.css";
 import { navigationLinks } from "@/constants/navigation";
+import { ContactForm } from "@/components";
 
 export default function HomePage() {
   const { paintlessDentSection, autoHailRepairSection, courseSection } = texts;
@@ -147,6 +148,12 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+        </Container>
+      </Section>
+
+      <Section id="section-contact">
+        <Container>
+          <ContactForm />
         </Container>
       </Section>
     </>

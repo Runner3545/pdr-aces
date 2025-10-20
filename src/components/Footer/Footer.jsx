@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 import { texts } from "@/constants";
 import { Text } from "@/ui";
 import { Instagram, Facebook, Youtube, Music2 } from "lucide-react";
-import YelpIcon from "@/ui/custom-icons/Yelp";
+import { YelpIcon } from "@/ui/custom-icons";
 import Link from "next/link";
 import { navigationMenu } from "@/constants/navigation";
 
@@ -12,7 +12,6 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        {/* --- Social Media --- */}
         <div className={styles.socialLinks}>
           <a
             href="https://www.instagram.com/pdraces?igsh=ZWNlN2ZiaGM5NzZl&utm_source=qr"
@@ -70,7 +69,6 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* --- Navigation Links (minimal) --- */}
         <nav className={styles.quickLinks} aria-label="Quick links">
           {navigationMenu.map((item) => (
             <Link key={item.link} href={item.link} className={styles.link}>

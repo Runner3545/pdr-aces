@@ -1,5 +1,4 @@
 .footer {
-  background-color: #ffffff;
   color: #111;
   padding: 3rem 2rem 1rem;
   display: flex;
@@ -18,7 +17,6 @@
   margin-bottom: 2rem;
 }
 
-/* --- Socials --- */
 .socialLinks {
   display: flex;
   flex-wrap: wrap;
@@ -55,9 +53,7 @@
   height: 22px;
 }
 
-/* Brand-ish colors */
 .instagram {
-  /* Instagram gradient */
   background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
 }
 .instagram:hover {
@@ -65,7 +61,6 @@
 }
 
 .tiktok {
-  /* TikTok primary black with accent glow on hover */
   background-color: #000000;
   position: relative;
   overflow: hidden;
@@ -107,7 +102,6 @@
   background-color: #d32323;
 }
 
-/* --- Minimal quick links --- */
 .quickLinks {
   display: flex;
   flex-direction: column;
@@ -135,7 +129,6 @@
   transform: translateY(1px);
 }
 
-/* --- Bottom --- */
 .footerBottom {
   width: 100%;
   text-align: center;
@@ -145,7 +138,6 @@
   opacity: 0.8;
 }
 
-/* --- Responsive --- */
 @media (max-width: 768px) {
   .footerContent {
     flex-direction: column;

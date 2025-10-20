@@ -2,18 +2,9 @@
   width: 100%;
 
   display: flex;
-  align-items: center; /* center your content vertically */
-  justify-content: center; /* center horizontally */
+  align-items: center;
+  justify-content: center;
   padding: 2rem;
-  box-sizing: border-box;
-  transition: background-color 0.4s ease, color 0.4s ease;
-  background-color: var(--bg-primary);
-}
-
-/* keep your spacing version for normal pages if needed */
-.section.padded {
-  min-height: auto;
-  padding: 4rem 0;
 }
 
 @media (max-width: 768px) {

@@ -1,1 +1,1 @@
-export { default } from "./Yelp";
+export { default as YelpIcon } from "./YelpIcon";

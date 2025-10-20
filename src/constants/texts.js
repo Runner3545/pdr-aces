@@ -86,6 +86,28 @@ const texts = {
     paragraphTwo: "Denver, Colorado",
     paragraphThree: "autopdraces@gmail.com",
   },
+
+  contact: {
+    title: "Get in Touch",
+    description:
+      "Have questions about our services or want to request an estimate? Fill out the form below — our team will get back to you shortly.",
+    nameLabel: "Your Name",
+    namePlaceholder: "Your name",
+    emailLabel: "Your Email",
+    emailPlaceholder: "you@example.com",
+    descriptionLabel: "Describe your problem",
+    descriptionPlaceholder: "Tell us a bit more...",
+    buttonText: "Submit",
+    buttonSubmitting: "Submitting...",
+    successText: "Thanks! Your message was sent.",
+    errors: {
+      nameRequired: "Please enter your name.",
+      nameMin: "Name must be at least 2 characters.",
+      emailRequired: "Please enter your email.",
+      emailInvalid: "Please enter a valid email address.",
+      descriptionTooLong: "Description is too long.",
+    },
+  },
 };
 
 export default texts;

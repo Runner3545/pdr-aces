@@ -132,3 +132,7 @@ body {
   background: rgba(0, 123, 255, 0.15);
   color: inherit;
 }
+
+fieldset {
+  border: 0;
+}
