@@ -12,6 +12,14 @@ const nextConfig = {
   images: { unoptimized: true },
 
   trailingSlash: true,
+
+  images: {
+    unoptimized: true,
+    loader: "custom",
+    loaderFile: "./gh-image-loader.js",
+  },
+
+  env: { NEXT_PUBLIC_BASE_PATH: isProd ? `/${repo}` : "" },
 };
 
 export default nextConfig;
