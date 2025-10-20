@@ -3,6 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import styles from "./Slider.module.css";
 
+import Image from "next/image";
+
 /**
  * @param {string} before - URL of the "before" image
  * @param {string} after - URL of the "after" image
@@ -59,13 +61,25 @@ export default function ImageCompareSlider({
       onMouseDown={handleDown}
       onTouchStart={handleDown}
     >
-      <img src={before} alt={altBefore} className={styles.beforeImage} />
+      <Image
+        width={800}
+        height={800}
+        src={before}
+        alt={altBefore}
+        className={styles.beforeImage}
+      />
 
       <div
         className={styles.afterWrapper}
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <img src={after} alt={altAfter} className={styles.afterImage} />
+        <Image
+          width={800}
+          height={800}
+          src={after}
+          alt={altAfter}
+          className={styles.afterImage}
+        />
       </div>
 
       {/* Slider line and handle */}
