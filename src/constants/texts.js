@@ -67,14 +67,18 @@ const texts = {
     title: "Learn More About the PDR Course",
     paragraphOne:
       "PDR stands for Paintless Dent Repair - one of the most in-demand skills in today’s automotive industry. It’s not easy to master, but once you do, it can completely change your future.",
-    paragraphTwo:
-      "My name is Nick, and I’ve been working in PDR for several years across the U.S. from auto dealerships and repair shops to retail locations. Over the years, I’ve met many technicians who finished training but still struggled once they started working  simply because they didn’t get enough real-world experience during their course.",
-    paragraphThree:
-      "That’s why I built this training program  to bridge that gap. I focus on hands-on practice, personalized instruction, and real results. My goal is to help you become a confident, skilled PDR technician ready to succeed on your own.",
+    
     listOne: {
       list_name: "Training Schedule:",
       list_textOne: "Evenings from 3 PM to 9 PM, Monday through Friday",
       list_textTwo: "Duration: 2 months (November-December)",
+    },
+    listTwo:{
+      list_name: "At our new PDR Training School in Denver, we don’t just teach you how to push dents — we create a personalized training path so you learn everything it takes to succeed in this trade:",
+      list_textOne: "Hands-on training on real cars",
+      list_textTwo: "Learn proven tools and real-world techniques",
+      list_textThree: "No experience required — just motivation to learn",
+      list_textFour: "Earn up to $1,000+ a day during hail season",
     },
     paragraphFour:
       "It won’t be easy - but if you’re ready to succeed in this field, I’ll guide you every step of the way.",
@@ -92,7 +96,11 @@ const texts = {
     titleCourse: "Start Your PDR Journey",
     descriptionCourse:
       "Want to learn Paintless Dent Repair (PDR) and start a new career? Fill out the form below - we’ll send you course details, pricing, and enrollment options, and answer any questions you’ve got.",
-    description:
+      description1:
+      "My name is Nick, and I’ve been working in PDR for several years across the U.S. from auto dealerships and repair shops to retail locations. Over the years, I’ve met many technicians who finished training but still struggled once they started working  simply because they didn’t get enough real-world experience during their course.",
+      description2:
+      "That’s why I built this training program  to bridge that gap. I focus on hands-on practice, personalized instruction, and real results. My goal is to help you become a confident, skilled PDR technician ready to succeed on your own.",
+      description3:
       "Hail damage? Door dings? We’ve got you covered. Fill out the quick form below our team will review your info and get back to you fast with a free, no-obligation quote.",
     nameLabel: "Your Name",
     namePlaceholder: "Your name",

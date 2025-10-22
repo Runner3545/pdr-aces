@@ -38,7 +38,6 @@ export default function Icon({
       role={decorative ? undefined : "img"}
       {...rest}
     >
-      {/* lucide icons accept size/strokeWidth props; we rely on CSS for size to keep consistency */}
       <IconCmp aria-label={decorative ? undefined : title} />
     </span>
   );

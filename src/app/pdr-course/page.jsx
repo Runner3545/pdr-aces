@@ -10,10 +10,17 @@ export default function PDRCoursePage() {
       <Container>
         <ContactForm
           title={t.titleCourse}
-          description={t.descriptionCourse}
+          description={
+            <>
+              <p>{t.description1}</p>
+              <p>{t.description2}</p>
+              <p>{t.descriptionCourse}</p>
+            </>
+          }
           descriptionLabel={t.descriptionLabelCourse}
           descriptionPlaceholder={t.descriptionPlaceholderCourse}
           buttonText={t.buttonTextCourse}
+          showLogo
         />
       </Container>
     </Section>

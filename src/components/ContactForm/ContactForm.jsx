@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./ContactForm.module.css";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -15,9 +16,10 @@ export default function ContactForm({
   descriptionPlaceholder = "",
   buttonText = "",
   defaultPhoneCountry = "US",
+  showLogo = false,
 }) {
   const t = texts.contact;
-  console.log({ descriptionLabel });
+
   const {
     register,
     control,
@@ -41,12 +43,31 @@ export default function ContactForm({
 
   return (
     <div className={styles.wrapper}>
-      <Text as="h2" weight="bold" className={styles.wrapper__title}>
-        {title || t.title}
-      </Text>
-      <Text as="p" color="secondary" className={styles.wrapper__description}>
-        {description || t.description}
-      </Text>
+      <div className={styles.courseHeader}>
+        {showLogo && (
+          <div>
+            <Image
+              src="/pdr-course-logo.jpg"
+              alt="PDR Course Logo"
+              width={100}
+              height={100}
+              className={styles.logo}
+              priority
+            />
+          </div>
+        )}
+
+        <Text as="h2" weight="bold" className={styles.wrapper__title}>
+          {title || t.title}
+        </Text>
+      </div>
+      <div className={styles.wrapper__description}>
+        {description || (
+          <Text as="p" color="secondary">
+            {t.description}
+          </Text>
+        )}
+      </div>
 
       <form
         className={styles.form}
