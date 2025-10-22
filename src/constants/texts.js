@@ -118,7 +118,7 @@ const texts = {
     buttonTextCourse: "Get Course Info",
 
     buttonSubmitting: "Submitting...",
-    successText: "Thanks! Your message was sent.",
+    successText: "Thank you! Your message was sent.",
     errors: {
       nameRequired: "Please enter your name.",
       nameMin: "Name must be at least 2 characters.",

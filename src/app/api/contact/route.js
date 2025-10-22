@@ -1,10 +1,7 @@
 import nodemailer from "nodemailer";
 import * as yup from "yup";
 import { NextResponse } from "next/server";
-import {
-  parsePhoneNumberFromString,
-  isValidPhoneNumber,
-} from "libphonenumber-js";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 export const runtime = "nodejs";
 
@@ -20,26 +17,29 @@ export async function OPTIONS() {
 
 const schema = yup
   .object({
-    title: yup
+    name: yup
       .string()
       .trim()
-      .min(1, "Title is required")
-      .max(120, "Title too long")
+      .min(2, "Name is required")
+      .max(120, "Name too long")
       .required(),
-    phone: yup
-      .string()
-      .trim()
-      .required("Phone is required")
-      .test(
-        "is-valid-phone",
-        "Phone is invalid",
-        (v) => !!v && isValidPhoneNumber(v)
-      ),
+    phone: yup.string().trim().required(),
+    // .matches(/^\d{10,15}$/, "") // only digits, 10–15 length
+    // .test("is-valid-phone", "", (val) => {
+    //   if (!val) return false;
+    //   try {
+    //     const parsed = parsePhoneNumberFromString("+" + val); // prepend "+" for parsing
+    //     return !!parsed && parsed.isValid();
+    //   } catch {
+    //     return false;
+    //   }
+    // }),
     description: yup
       .string()
       .trim()
       .max(2000, "Description too long")
       .optional(),
+    type: yup.string().required("Type is required"),
   })
   .required();
 
@@ -51,24 +51,18 @@ const escapeHtml = (s = "") =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-const toText = ({ title, phone, country }) =>
-  [
-    `New Contact Request`,
-    ``,
-    `Title: ${title}`,
-    `Phone: ${phone}`,
-    `Country: ${country || "Unknown"}`,
-  ].join("\n");
+const toText = ({ name, phone }) =>
+  [`New Contact Request`, ``, `Name: ${name}`, `Phone: ${phone}`].join("\n");
 
-const toHtml = ({ title, phone, description, country }) => `
+const toHtml = ({ name, phone, description }) => `
   <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:#111">
     <h3 style="margin:0 0 10px 0;">New Contact Request</h3>
     <table style="border-collapse:collapse;width:100%;max-width:640px">
       <tbody>
         <tr>
-          <td style="padding:8px 12px;border:1px solid #eee;background:#f8fafc;width:160px;">Title</td>
+          <td style="padding:8px 12px;border:1px solid #eee;background:#f8fafc;width:160px;">Name</td>
           <td style="padding:8px 12px;border:1px solid #eee;">${escapeHtml(
-            title
+            name
           )}</td>
         </tr>
         <tr>
@@ -76,12 +70,6 @@ const toHtml = ({ title, phone, description, country }) => `
           <td style="padding:8px 12px;border:1px solid #eee;">${escapeHtml(
             phone
           )}</td>
-        </tr>
-        <tr>
-          <td style="padding:8px 12px;border:1px solid #eee;background:#f8fafc;">Country</td>
-          <td style="padding:8px 12px;border:1px solid #eee;">${
-            country || "Unknown"
-          }</td>
         </tr>
         ${
           description
@@ -122,13 +110,7 @@ export async function POST(req) {
       );
     }
 
-    const { title, phone, description } = data;
-
-    let country = null;
-    try {
-      const parsed = parsePhoneNumberFromString(phone);
-      if (parsed) country = parsed.country || null;
-    } catch {}
+    const { name, phone, description, type } = data;
 
     const senderAddress = process.env.REFERRAL_EMAIL_SENDER_ADDRESS;
     const senderAppPass = process.env.REFERRAL_EMAIL_SENDER_APP_PASS;
@@ -144,9 +126,9 @@ export async function POST(req) {
     const mailOptions = {
       from: senderAddress,
       to: senderAddress,
-      subject: `New Contact: ${title}`,
-      text: toText({ title, phone, country }),
-      html: toHtml({ title, phone, description, country }),
+      subject: `New Contact: ${name}`,
+      text: toText({ name, phone }),
+      html: toHtml({ name, phone, description }),
       headers: { "X-Source": "Website Contact" },
     };
 

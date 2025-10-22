@@ -57,7 +57,7 @@
 .successText {
   color: var(--color-green);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 2rem;
 }
 
 .textarea {

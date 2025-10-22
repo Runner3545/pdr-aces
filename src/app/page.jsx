@@ -217,7 +217,7 @@ export default function HomePage() {
       <Section id="section-contact">
         <Container>
           <FlipIn direction="top" trigger="scroll">
-            <ContactForm />
+            <ContactForm type="default" />
           </FlipIn>
         </Container>
       </Section>

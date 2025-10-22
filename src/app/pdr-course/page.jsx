@@ -44,6 +44,7 @@ export default function PDRCoursePage() {
 
         <FlipIn direction="top" trigger="scroll">
           <ContactForm
+            type="course"
             title={tContact.titleCourse}
             description={tContact.descriptionCourse}
             descriptionLabel={tContact.descriptionLabelCourse}
