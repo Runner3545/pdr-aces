@@ -6,11 +6,27 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { navigationMenu, navigationLinks } from "@/constants/navigation";
-import { Container } from "@/ui";
+import { Container, Button } from "@/ui";
+import { texts } from "@/constants";
 
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const contactSectionParams = (() => {
+    switch (pathname) {
+      case "/":
+        return { link: "#section-contact", title: texts.contact.title };
+      case "/pdr-course/":
+        return {
+          link: "/pdr-course/#section-contact",
+          title: texts.contact.titleCourse,
+        };
+
+      default:
+        return { link: "/#section-contact", title: texts.contact.title };
+    }
+  })();
 
   useEffect(() => {
     setOpen(false);
@@ -52,6 +68,9 @@ export default function Header() {
                   {item.title}
                 </Link>
               ))}
+              <Link href={contactSectionParams.link}>
+                <Button>{contactSectionParams.title}</Button>
+              </Link>
             </nav>
 
             <button

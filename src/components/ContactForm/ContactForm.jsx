@@ -9,13 +9,15 @@ import { Button, Input, Textarea, Label, Text, PhoneInput } from "@/ui";
 
 export default function ContactForm({
   onSubmit: onSubmitProp,
+  title,
+  description,
   descriptionLabel = "",
   descriptionPlaceholder = "",
   buttonText = "",
   defaultPhoneCountry = "US",
 }) {
   const t = texts.contact;
-
+  console.log({ descriptionLabel });
   const {
     register,
     control,
@@ -40,10 +42,10 @@ export default function ContactForm({
   return (
     <div className={styles.wrapper}>
       <Text as="h2" weight="bold" className={styles.wrapper__title}>
-        {t.title}
+        {title || t.title}
       </Text>
       <Text as="p" color="secondary" className={styles.wrapper__description}>
-        {t.description}
+        {description || t.description}
       </Text>
 
       <form
@@ -52,7 +54,6 @@ export default function ContactForm({
         noValidate
       >
         <fieldset className={styles.fieldset}>
-          {/* Name */}
           <div className={styles.field}>
             <Label htmlFor="name" required>
               {t.nameLabel}
@@ -72,7 +73,6 @@ export default function ContactForm({
             )}
           </div>
 
-          {/* Phone */}
           <div className={styles.field}>
             <Label htmlFor="phone" required>
               {t.phoneLabel}
@@ -100,7 +100,6 @@ export default function ContactForm({
           </div>
         </fieldset>
 
-        {/* Description */}
         <div className={styles.field}>
           <Label htmlFor="description">
             {descriptionLabel || t.descriptionLabel}
@@ -119,7 +118,6 @@ export default function ContactForm({
           )}
         </div>
 
-        {/* Actions */}
         <div className={styles.actions}>
           <Button
             type="submit"

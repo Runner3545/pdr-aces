@@ -89,6 +89,9 @@ const texts = {
 
   contact: {
     title: "Request an estimate",
+    titleCourse: "Start Your PDR Journey",
+    descriptionCourse:
+      "Want to learn Paintless Dent Repair (PDR) and start a new career? Fill out the form below - we’ll send you course details, pricing, and enrollment options, and answer any questions you’ve got.",
     description:
       "Hail damage? Door dings? We’ve got you covered. Fill out the quick form below our team will review your info and get back to you fast with a free, no-obligation quote.",
     nameLabel: "Your Name",
