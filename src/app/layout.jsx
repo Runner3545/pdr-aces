@@ -17,6 +17,24 @@ const poppins = Poppins({
 export const metadata = {
   title: "PDRACES",
   description: "Paintless Dent Repair Specialists",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "PDRACES",
+    description: "Paintless Dent Repair Specialists",
+    siteName: "PDRACES",
+    images: [
+      {
+        url: "./favicon.ico",
+        width: 1200,
+        height: 630,
+        alt: "PDRACES - Paintless Dent Repair Specialists",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {

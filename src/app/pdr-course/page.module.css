@@ -3,13 +3,13 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 4rem; /* space between text and logo */
+  gap: 4rem;
 }
 
 .textBlock {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* space between paragraphs */
+  gap: 1rem;
   max-width: 36rem;
 }
 

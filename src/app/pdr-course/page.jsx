@@ -10,6 +10,7 @@ export default function PDRCoursePage() {
   return (
     <Section id="section-contact">
       <Container>
+        <Text as="h4">{t.titleCourse}</Text>
         <div className={styles.stack} data-reveal style={{ "--delay": "80ms" }}>
           <div className={styles.textBlock}>
             <Text
@@ -42,16 +43,4 @@ export default function PDRCoursePage() {
       </Container>
     </Section>
   );
-
-  {
-    /* <Container> 
-    <div className={styles.stack} data-reveal style={{ "--delay": "80ms" }}> 
-    <Text as="p" className={${styles.lede} ${styles.measure}} weight="medium" > {texts.courseSection.paragraphOne} 
-    </Text> 
-    <Text as="p" className={styles.measure}> {texts.courseSection.paragraphTwo} </Text>
-     </div> 
-     <ContactForm title={t.titleCourse} description={t.descriptionCourse} descriptionLabel={t.descriptionLabelCourse} descriptionPlaceholder={t.descriptionPlaceholderCourse} buttonText={t.buttonTextCourse} />
-     </Container>
-     </Section> */
-  }
 }
