@@ -16,6 +16,24 @@
   }
 }
 
+@keyframes flickerPrimaryStrong {
+  0% {
+    background-color: var(--color-blue);
+  }
+  25% {
+    background-color: color-mix(in srgb, var(--color-blue) 90%, white 10%);
+  }
+  50% {
+    background-color: color-mix(in srgb, var(--color-blue) 80%, black 20%);
+  }
+  75% {
+    background-color: color-mix(in srgb, var(--color-blue) 95%, white 5%);
+  }
+  100% {
+    background-color: var(--color-blue);
+  }
+}
+
 .button {
   position: relative;
   display: inline-flex;
@@ -44,6 +62,10 @@
   background: var(--color-blue);
   color: var(--text-inverse);
   animation: flickerPrimary 2s ease-in-out infinite;
+}
+
+.primary:hover:not(.disabled) {
+  animation: flickerPrimaryStrong 1s ease-in-out infinite;
 }
 
 .secondary {
