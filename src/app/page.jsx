@@ -40,7 +40,7 @@ export default function HomePage() {
 
           <div className={styles.content}>
             <div className={styles.contentRow}>
-              <div className={styles.leftColumn} data-reveal>
+              <div className={styles.leftColumn}>
                 <SlideIn from="left" trigger="scroll">
                   <Text
                     as="p"
@@ -60,7 +60,6 @@ export default function HomePage() {
                       <Button
                         icon={<Icon as={ArrowRight} />}
                         variant="secondary"
-                        data-reveal
                       >
                         {texts.default.button_link_title}
                       </Button>
@@ -69,7 +68,7 @@ export default function HomePage() {
                 </SlideIn>
               </div>
 
-              <div className={styles.rightColumn} data-reveal>
+              <div className={clsx(styles.rightColumn, styles.reversed)}>
                 <SlideIn from="right" trigger="scroll">
                   <Slider
                     before="/paintlessDentRepair-before.jpg"
@@ -98,7 +97,7 @@ export default function HomePage() {
 
           <div className={styles.content}>
             <div className={`${styles.contentRow} ${styles.reverse}`}>
-              <div className={styles.leftColumn} data-reveal>
+              <div className={styles.leftColumn}>
                 <SlideIn from="right" trigger="scroll">
                   <Text
                     as="p"
@@ -118,7 +117,6 @@ export default function HomePage() {
                       <Button
                         icon={<Icon as={ArrowRight} />}
                         variant="secondary"
-                        data-reveal
                       >
                         {texts.default.button_link_title}
                       </Button>
@@ -127,7 +125,7 @@ export default function HomePage() {
                 </SlideIn>
               </div>
 
-              <div className={styles.rightColumn} data-reveal>
+              <div className={styles.rightColumn}>
                 <SlideIn from="left" trigger="scroll">
                   <Slider
                     before="/autoHailRepair-before.jpg"
@@ -186,7 +184,6 @@ export default function HomePage() {
                         <Button
                           icon={<Icon as={ArrowRight} />}
                           variant="secondary"
-                          data-reveal
                           style={{ "--delay": "120ms" }}
                         >
                           {texts.default.button_link_title}

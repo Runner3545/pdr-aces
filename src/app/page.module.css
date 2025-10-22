@@ -64,9 +64,13 @@
   flex: 1;
   min-width: 100%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   margin-top: 1rem;
+}
+
+.rightColumn.reversed {
+  justify-content: flex-end;
 }
 
 .measure {
