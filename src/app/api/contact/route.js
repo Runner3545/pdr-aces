@@ -51,14 +51,27 @@ const escapeHtml = (s = "") =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-const toText = ({ name, phone }) =>
-  [`New Contact Request`, ``, `Name: ${name}`, `Phone: ${phone}`].join("\n");
+const toText = ({ name, phone, type }) =>
+  [
+    `New ${type === "default" ? "Contact" : "Course"} Request`,
+    ``,
+    `Name: ${name}`,
+    `Phone: ${phone}`,
+  ].join("\n");
 
-const toHtml = ({ name, phone, description }) => `
+const toHtml = ({ name, phone, description, type }) => `
   <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:#111">
-    <h3 style="margin:0 0 10px 0;">New Contact Request</h3>
+    <h3 style="margin:0 0 10px 0;">New ${
+      type === "default" ? "Contact" : "Course"
+    } Request</h3>
     <table style="border-collapse:collapse;width:100%;max-width:640px">
       <tbody>
+        <tr>
+          <td style="padding:8px 12px;border:1px solid #eee;background:#f8fafc;width:160px;">Type</td>
+          <td style="padding:8px 12px;border:1px solid #eee;">${escapeHtml(
+            type === "default" ? "Contact" : "Course"
+          )}</td>
+        </tr>
         <tr>
           <td style="padding:8px 12px;border:1px solid #eee;background:#f8fafc;width:160px;">Name</td>
           <td style="padding:8px 12px;border:1px solid #eee;">${escapeHtml(
@@ -126,9 +139,11 @@ export async function POST(req) {
     const mailOptions = {
       from: senderAddress,
       to: senderAddress,
-      subject: `New Contact: ${name}`,
-      text: toText({ name, phone }),
-      html: toHtml({ name, phone, description }),
+      subject: `New ${
+        type === "default" ? "Contact" : "Course"
+      } request: ${name}`,
+      text: toText({ name, phone, type }),
+      html: toHtml({ name, phone, description, type }),
       headers: { "X-Source": "Website Contact" },
     };
 
