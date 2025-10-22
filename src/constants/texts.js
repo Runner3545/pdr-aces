@@ -88,23 +88,30 @@ const texts = {
   },
 
   contact: {
-    title: "Get in Touch",
+    title: "Request an estimate",
     description:
-      "Have questions about our services or want to request an estimate? Fill out the form below — our team will get back to you shortly.",
+      "Hail damage? Door dings? We’ve got you covered. Fill out the quick form below our team will review your info and get back to you fast with a free, no-obligation quote.",
     nameLabel: "Your Name",
     namePlaceholder: "Your name",
-    emailLabel: "Your Email",
-    emailPlaceholder: "you@example.com",
-    descriptionLabel: "Describe your problem",
-    descriptionPlaceholder: "Tell us a bit more...",
-    buttonText: "Submit",
+    phoneLabel: "Phone Number",
+    phonePlaceholder: "",
+
+    descriptionLabel: "Describe the Damage:",
+    descriptionPlaceholder: `Example: “Hail damage on hood and roof” or “Door ding on driver side.”`,
+    buttonText: "Get your free estimate",
+
+    descriptionLabelCourse: "Tell us about yourself:",
+    descriptionPlaceholderCourse:
+      "Example: “I am new to PDR” or “I already work in auto body and want to add PDR.”",
+    buttonTextCourse: "Get Course Info",
+
     buttonSubmitting: "Submitting...",
     successText: "Thanks! Your message was sent.",
     errors: {
       nameRequired: "Please enter your name.",
       nameMin: "Name must be at least 2 characters.",
-      emailRequired: "Please enter your email.",
-      emailInvalid: "Please enter a valid email address.",
+      phoneRequired: "Please enter your phone number.",
+      phoneInvalid: "Please enter a valid email address.",
       descriptionTooLong: "Description is too long.",
     },
   },

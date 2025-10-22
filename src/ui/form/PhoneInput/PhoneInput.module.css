@@ -1,0 +1,118 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* единый контейнер с рамкой/радиусом/фокусом */
+.combo {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  /* overflow: hidden;  ← оставляем выключенным, чтоб тень и поповер не резались */
+}
+
+.combo:focus-within {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 3px var(--color-blue-light);
+}
+
+/* корневой контейнер библиотеки */
+.rp2Container {
+  border: none !important;
+  width: 100%;
+  position: relative !important; /* гарантируем абсолютное позиционирование флага внутри */
+}
+
+/* === ЛЕВАЯ ЗОНА С ФЛАГОМ (selected-flag) ===
+   Важно: в этой либе .selected-flag позиционируется absolute поверх инпута,
+   поэтому у инпута должен быть padding-left >= ширина этой зоны. */
+.rp2Button {
+  height: 44px !important;
+  width: 56px !important; /* ← фикс ширина области флага */
+  left: 0 !important;
+  top: 0 !important;
+  background: transparent !important;
+  border: none !important; /* собственную рамку не рисуем */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-right: 1px solid var(--border-color) !important; /* вертикальный разделитель */
+}
+
+/* сам флаг внутри */
+.rp2Container :global(.flag) {
+  width: 20px !important;
+  height: 14px !important;
+  box-shadow: none !important;
+}
+
+/* === ПРАВАЯ ЧАСТЬ — ПОЛЕ ВВОДА === */
+.rp2Input {
+  height: 44px !important; /* одинаковая высота */
+  line-height: 44px !important;
+  font-size: 1rem !important;
+  /* ВАЖНО: добавляем слева место под абсолютный .selected-flag */
+  padding: 0 12px 0 60px !important; /* 56px зона флага + 4px зазор */
+  border: none !important; /* рамку рисует .combo */
+  width: 100% !important;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
+}
+
+.rp2Input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
+}
+
+/* === ДРОПДАУН СО СТРАНАМИ (портал в body уже включён в JS) === */
+.rp2Dropdown {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-strong) !important;
+  margin-top: 6px !important;
+  max-height: 260px !important;
+  overflow: auto !important;
+
+  /* список стран */
+  :global(.country-list .country) {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  :global(.country-list .country:hover) {
+    background: var(--color-blue-light);
+  }
+
+  /* тонкий скроллбар */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+  :global(&::-webkit-scrollbar) {
+    width: 6px;
+  }
+  :global(&::-webkit-scrollbar-track) {
+    background: transparent;
+  }
+  :global(&::-webkit-scrollbar-thumb) {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 999px;
+  }
+}
+
+/* ошибка — подсветка единого контейнера */
+.hasError .combo {
+  border-color: var(--color-red);
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12);
+}
+
+.errorText {
+  color: var(--color-red);
+  font-size: 0.875rem;
+  line-height: 1.3;
+}

@@ -1,24 +1,31 @@
 "use client";
 
 import styles from "./ContactForm.module.css";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { contactSchema } from "@/schemas";
 import { texts } from "@/constants";
-import { Button, Input, Textarea, Label, Text } from "@/ui";
+import { Button, Input, Textarea, Label, Text, PhoneInput } from "@/ui";
 
-export default function ContactForm({ onSubmit: onSubmitProp }) {
+export default function ContactForm({
+  onSubmit: onSubmitProp,
+  descriptionLabel = "",
+  descriptionPlaceholder = "",
+  buttonText = "",
+  defaultPhoneCountry = "US",
+}) {
   const t = texts.contact;
 
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
   } = useForm({
     resolver: yupResolver(contactSchema),
     mode: "onTouched",
-    defaultValues: { name: "", email: "", description: "" },
+    defaultValues: { name: "", phone: "", description: "" },
   });
 
   const onSubmit = async (data) => {
@@ -32,12 +39,7 @@ export default function ContactForm({ onSubmit: onSubmitProp }) {
 
   return (
     <div className={styles.wrapper}>
-      <Text
-        as="h2"
-        weight="bold"
-        animate="words"
-        className={styles.wrapper__title}
-      >
+      <Text as="h2" weight="bold" className={styles.wrapper__title}>
         {t.title}
       </Text>
       <Text as="p" color="secondary" className={styles.wrapper__description}>
@@ -50,6 +52,7 @@ export default function ContactForm({ onSubmit: onSubmitProp }) {
         noValidate
       >
         <fieldset className={styles.fieldset}>
+          {/* Name */}
           <div className={styles.field}>
             <Label htmlFor="name" required>
               {t.nameLabel}
@@ -69,32 +72,42 @@ export default function ContactForm({ onSubmit: onSubmitProp }) {
             )}
           </div>
 
+          {/* Phone */}
           <div className={styles.field}>
-            <Label htmlFor="email" required>
-              {t.emailLabel}
+            <Label htmlFor="phone" required>
+              {t.phoneLabel}
             </Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder={t.emailPlaceholder}
-              autoComplete="email"
-              aria-invalid={!!errors.email || undefined}
-              {...register("email")}
-              error={errors.email?.message}
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field: { value, onChange, ref } }) => (
+                <PhoneInput
+                  id="phone"
+                  value={value}
+                  onChange={onChange}
+                  defaultCountry="us"
+                  placeholder={t.phonePlaceholder}
+                  error={errors.phone?.message}
+                  ref={ref}
+                />
+              )}
             />
-            {errors.email && (
+            {errors.phone && (
               <p className={styles.errorText} role="alert">
-                {errors.email.message}
+                {errors.phone.message}
               </p>
             )}
           </div>
         </fieldset>
 
+        {/* Description */}
         <div className={styles.field}>
-          <Label htmlFor="description">{t.descriptionLabel}</Label>
+          <Label htmlFor="description">
+            {descriptionLabel || t.descriptionLabel}
+          </Label>
           <Textarea
             id="description"
-            placeholder={t.descriptionPlaceholder}
+            placeholder={descriptionPlaceholder || t.descriptionPlaceholder}
             rows={5}
             {...register("description")}
             className={styles.textarea}
@@ -106,13 +119,14 @@ export default function ContactForm({ onSubmit: onSubmitProp }) {
           )}
         </div>
 
+        {/* Actions */}
         <div className={styles.actions}>
           <Button
             type="submit"
             disabled={isSubmitting}
             className={styles.actions__submit}
           >
-            {isSubmitting ? t.buttonSubmitting : t.buttonText}
+            {isSubmitting ? t.buttonSubmitting : buttonText || t.buttonText}
           </Button>
           {isSubmitSuccessful && (
             <span className={styles.successText} role="status">
