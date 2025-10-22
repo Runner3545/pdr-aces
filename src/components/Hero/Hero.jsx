@@ -3,9 +3,10 @@
 import Link from "next/link";
 import clsx from "clsx";
 import styles from "./Hero.module.css";
-import { Section, Container, Text, Button, Icon } from "@/ui";
+import { Section, Container, Text, Button, Icon, SlideIn } from "@/ui";
 import { ArrowRight } from "@/ui/icons";
 import { texts } from "@/constants";
+import Image from "next/image";
 
 import TrustList from "./TrustList";
 
@@ -14,19 +15,13 @@ export default function Hero({
   title = "Restore your vehicle’s value.\nLearn an in-demand skill.",
   description = "Precision paintless dent repair in Denver, CO plus a hands-on PDR course designed to get you job-ready.",
   primaryHref = "#section-contact",
-  primaryText = "Request estimate",
+  primaryText = "Request an estimate",
   imageSrc = "/logo-main.png",
   imageAlt = "PDR Aces Logo",
   className = "",
 }) {
   return (
     <Section id="hero" className={clsx(styles.hero, className)}>
-      <div className={styles.bgWrap} aria-hidden="true">
-        <div className={styles.radial} />
-        <div className={styles.grid} />
-        <div className={styles.glow} />
-      </div>
-
       <Container className={styles.inner}>
         <div className={styles.content}>
           {eyebrow ? (
@@ -35,6 +30,7 @@ export default function Hero({
               className={styles.eyebrow}
               weight="medium"
               color="secondary"
+              animate="words"
             >
               {eyebrow}
             </Text>
@@ -44,32 +40,45 @@ export default function Hero({
             {title}
           </Text>
 
-          <Text as="p" className={styles.subtitle} color="secondary">
+          <Text
+            as="p"
+            className={styles.subtitle}
+            color="secondary"
+            animate="words"
+          >
             {description}
           </Text>
 
-          <TrustList />
+          <SlideIn from="left">
+            <TrustList />
+          </SlideIn>
 
-          <div className={styles.actions}>
-            <Link href={primaryHref}>
-              <Button
-                icon={<Icon as={ArrowRight} />}
-                className={styles.primaryCta}
-              >
-                {primaryText}
-              </Button>
-            </Link>
+          <SlideIn from="left">
+            <div className={styles.actions}>
+              <Link href={primaryHref}>
+                <Button
+                  icon={<Icon as={ArrowRight} />}
+                  className={styles.primaryCta}
+                >
+                  {primaryText}
+                </Button>
+              </Link>
+            </div>
+          </SlideIn>
+        </div>
+
+        <SlideIn from="right">
+          <div className={styles.visual}>
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={400}
+              height={400}
+              className={styles.image}
+              loading="eager"
+            />
           </div>
-        </div>
-
-        <div className={styles.visual}>
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className={styles.image}
-            loading="eager"
-          />
-        </div>
+        </SlideIn>
       </Container>
     </Section>
   );

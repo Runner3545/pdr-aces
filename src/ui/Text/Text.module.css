@@ -42,6 +42,10 @@
   color: var(--text-secondary);
 }
 
+.text[data-animate] {
+  opacity: 0;
+}
+
 /* === Weights === */
 .weight-light {
   font-weight: 300;

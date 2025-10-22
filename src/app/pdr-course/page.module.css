@@ -2,8 +2,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column-reverse;
   flex-wrap: wrap;
-  gap: 4rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: var(--text-primary);
+  padding-bottom: 1rem;
+  text-align: center;
 }
 
 .textBlock {
@@ -18,22 +26,29 @@
 }
 
 .logo {
-  padding: 2rem;
-  flex-shrink: 0;
-  width: 380px;
+  width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: 0.25rem;
 }
 
-@media (max-width: 1024px) {
-  .logo {
-    width: 300px;
+@media (min-width: 768px) {
+  .title {
+    text-align: left;
+  }
+  .stack {
+    flex-direction: row;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
   .stack {
-    flex-direction: column;
+    gap: 4rem;
+  }
+  .logo {
+    width: 300px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-width: 380px;
   }
 }

@@ -28,7 +28,7 @@
   width: 0.5em; /* scales with text size */
   height: 0.5em;
   border-radius: 50%;
-  background: var(--primary-color, #007bff);
+  background: var(--color-blue-dark);
   transform: translateY(0); /* no optical nudge needed with grid */
   transition: transform 0.25s ease;
 }
@@ -39,5 +39,5 @@
 
 .text {
   display: inline-block;
-  font-size: 1.125rem;
+  font-size: 1.125rem !important;
 }

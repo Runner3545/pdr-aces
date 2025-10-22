@@ -15,7 +15,7 @@ export default function ContactForm({
   defaultPhoneCountry = "US",
 }) {
   const t = texts.contact;
-  console.log({ descriptionLabel });
+
   const {
     register,
     control,

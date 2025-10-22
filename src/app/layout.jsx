@@ -1,6 +1,6 @@
 import { Poppins } from "next/font/google";
 import { Footer, Header } from "@/components";
-import { PageWrapper } from "@/ui";
+import { Background } from "@/ui";
 
 import "../styles/variables.css";
 import "../styles/reset.css";
@@ -41,6 +41,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.variable}>
+        <Background />
         <Header />
 
         {children}

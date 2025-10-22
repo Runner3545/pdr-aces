@@ -6,9 +6,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { navigationMenu, navigationLinks } from "@/constants/navigation";
-import { Container, Button, Icon } from "@/ui";
+import { Container, Button, Icon, SlideIn, Text } from "@/ui";
 import { texts } from "@/constants";
 import { ArrowRight } from "@/ui/icons";
+import clsx from "clsx";
 
 export default function Header() {
   const pathname = usePathname();
@@ -40,40 +41,47 @@ export default function Header() {
   return (
     <>
       <header className={styles.header}>
-        <Container>
+        <Container className={styles.container}>
           <div className={styles.inner}>
-            <Link
-              href={navigationLinks.home}
-              className={styles.brand}
-              aria-label="Home"
-            >
-              <Image
-                src="/logo-main.png"
-                alt="Logo"
-                width={180}
-                height={72}
-                priority
-                className={styles.logo}
-              />
-            </Link>
+            <SlideIn from="left">
+              <Link
+                href={navigationLinks.home}
+                className={styles.brand}
+                aria-label="Home"
+              >
+                <Image
+                  src="/logo-main.png"
+                  alt="Logo"
+                  width={180}
+                  height={72}
+                  priority
+                  className={styles.logo}
+                />
+              </Link>
+            </SlideIn>
 
             <nav className={styles.nav} aria-label="Main">
               {navigationMenu.map((item) => (
-                <Link
-                  key={item.link}
-                  href={item.link}
-                  className={`${styles.link} ${
-                    pathname === item.link ? styles.active : ""
-                  }`}
-                >
-                  {item.title}
+                <Link key={item.link} href={item.link} className={styles.link}>
+                  <Text
+                    as="p"
+                    animate="opacity"
+                    className={clsx(
+                      styles.link__text,
+                      pathname === item.link ? styles.active : ""
+                    )}
+                  >
+                    {item.title}
+                  </Text>
                 </Link>
               ))}
-              <Link href={contactSectionParams.link}>
-                <Button icon={<Icon as={ArrowRight} />}>
-                  {contactSectionParams.title}
-                </Button>
-              </Link>
+              <SlideIn from="right">
+                <Link href={contactSectionParams.link}>
+                  <Button icon={<Icon as={ArrowRight} />}>
+                    {contactSectionParams.title}
+                  </Button>
+                </Link>
+              </SlideIn>
             </nav>
 
             <button

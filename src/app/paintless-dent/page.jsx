@@ -1,4 +1,4 @@
-import { Icon, Text, Slider, Section, Container } from "@/ui";
+import { Icon, Text, Slider, Section, Container, SlideIn } from "@/ui";
 import { CheckCircle } from "@/ui/icons";
 import { texts } from "@/constants";
 import styles from "./page.module.css";
@@ -9,61 +9,73 @@ export default function PaintlessDentRepairPage() {
   return (
     <Section>
       <Container>
-        <Text as="h2" className={styles.title} weight="bold">
+        <Text as="h2" className={styles.title} weight="bold" animate="words">
           {paintlessDentSection.title}
         </Text>
 
-        <Text as="p" className={styles.par}>
+        <Text as="p" className={styles.par} animate="opacity">
           {paintlessDentSection.paragraphOne}
         </Text>
-        <Text as="p" className={styles.par}>
+        <Text as="p" className={styles.par} animate="opacity">
           {paintlessDentSection.paragraphTwo}
         </Text>
 
         <div className={styles.content}>
           <div className={styles.contentRow}>
             <div className={`${styles.listBlock} ${styles.stack}`}>
-              <Text as="h4">{paintlessDentSection.listOne.list_name}</Text>
-              <ul className={styles.list}>
-                {[
-                  paintlessDentSection.listOne.list_textOne,
-                  paintlessDentSection.listOne.list_textTwo,
-                  paintlessDentSection.listOne.list_textThree,
-                  paintlessDentSection.listOne.list_textFour,
-                ].map((item, i) => (
-                  <li key={i} className={styles.listItem}>
-                    <Icon
-                      as={CheckCircle}
-                      size="sm"
-                      strokeWidth={2}
-                      className={styles.icon}
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <Text as="h4" animate="words">
+                {paintlessDentSection.listOne.list_name}
+              </Text>
+              <SlideIn from="left">
+                <ul className={styles.list}>
+                  {[
+                    paintlessDentSection.listOne.list_textOne,
+                    paintlessDentSection.listOne.list_textTwo,
+                    paintlessDentSection.listOne.list_textThree,
+                    paintlessDentSection.listOne.list_textFour,
+                  ].map((item, i) => (
+                    <li key={i} className={styles.listItem}>
+                      <Icon
+                        as={CheckCircle}
+                        size="sm"
+                        strokeWidth={2}
+                        className={styles.icon}
+                      />
+                      <Text as="p" animate="opacity">
+                        {item}
+                      </Text>
+                    </li>
+                  ))}
+                </ul>
+              </SlideIn>
             </div>
 
             <div className={`${styles.listBlock} ${styles.stack}`}>
-              <Text as="h4">{paintlessDentSection.listTwo.list_name}</Text>
-              <ul className={styles.list}>
-                {[
-                  paintlessDentSection.listTwo.list_textOne,
-                  paintlessDentSection.listTwo.list_textTwo,
-                  paintlessDentSection.listTwo.list_textThree,
-                  paintlessDentSection.listTwo.list_textFour,
-                ].map((item, i) => (
-                  <li key={i} className={styles.listItem}>
-                    <Icon
-                      as={CheckCircle}
-                      size="sm"
-                      strokeWidth={2}
-                      className={styles.icon}
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <Text as="h4" animate="words">
+                {paintlessDentSection.listTwo.list_name}
+              </Text>
+              <SlideIn from="right">
+                <ul className={styles.list}>
+                  {[
+                    paintlessDentSection.listTwo.list_textOne,
+                    paintlessDentSection.listTwo.list_textTwo,
+                    paintlessDentSection.listTwo.list_textThree,
+                    paintlessDentSection.listTwo.list_textFour,
+                  ].map((item, i) => (
+                    <li key={i} className={styles.listItem}>
+                      <Icon
+                        as={CheckCircle}
+                        size="sm"
+                        strokeWidth={2}
+                        className={styles.icon}
+                      />
+                      <Text as="p" animate="opacity">
+                        {item}
+                      </Text>
+                    </li>
+                  ))}
+                </ul>
+              </SlideIn>
             </div>
           </div>
 
