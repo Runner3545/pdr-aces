@@ -39,7 +39,7 @@
 .contentRow {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: space-between;
   gap: 2.5rem;
   flex-wrap: wrap;
@@ -53,6 +53,9 @@
 .leftColumn {
   flex: 1;
   min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .rightColumn {
@@ -64,11 +67,7 @@
 }
 
 .measure {
-  margin-top: 0.875rem;
   max-width: 68ch;
-}
-
-.lede {
   font-size: 1.125rem;
   line-height: 1.75;
   color: var(--text-primary);
@@ -76,7 +75,11 @@
 }
 
 .ctaRow {
-  margin-top: 0.5rem;
+  margin-top: auto;
+}
+
+.spacingTop {
+  margin-top: 1rem;
 }
 
 @media (max-width: 768px) {

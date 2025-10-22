@@ -13,8 +13,14 @@ export default function AutoHailRepairPage() {
           {autoHailRepairSection.title}
         </Text>
 
+        <Text as="p" className={styles.par}>
+          {autoHailRepairSection.paragraphOne}
+        </Text>
+        <Text as="p" className={styles.par}>
+          {autoHailRepairSection.paragraphTwo}
+        </Text>
+
         <div className={styles.content}>
-          {/* --- Lists --- */}
           <div className={styles.contentRow}>
             <div className={`${styles.listBlock} ${styles.stack}`}>
               <Text as="h4">{autoHailRepairSection.listOne.list_name}</Text>
@@ -61,7 +67,6 @@ export default function AutoHailRepairPage() {
             </div>
           </div>
 
-          {/* --- Sliders --- */}
           <div className={styles.sliderContainer}>
             <Slider
               before="/AHRphoto1-before.jpg"

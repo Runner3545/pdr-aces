@@ -7,13 +7,15 @@ import { ArrowRight, CheckCircle } from "@/ui/icons";
 import { texts } from "@/constants";
 import styles from "./page.module.css";
 import { navigationLinks } from "@/constants/navigation";
-import { ContactForm } from "@/components";
+import { ContactForm, Hero } from "@/components";
 
 export default function HomePage() {
   const { paintlessDentSection, autoHailRepairSection, courseSection } = texts;
 
   return (
     <>
+      <Hero />
+
       <Section id="section-paintless-dent-repair">
         <Container>
           <Text as="h2" className={styles.title} weight="bold">
@@ -22,10 +24,7 @@ export default function HomePage() {
 
           <div className={styles.content}>
             <div className={styles.contentRow}>
-              <div
-                className={`${styles.leftColumn} ${styles.stack}`}
-                data-reveal
-              >
+              <div className={styles.leftColumn} data-reveal>
                 <Text
                   as="p"
                   className={`${styles.lede} ${styles.measure}`}
@@ -65,12 +64,13 @@ export default function HomePage() {
 
       <Section id="section-auto-hail-repair">
         <Container>
+          <Text as="h2" className={styles.title} weight="bold">
+            {autoHailRepairSection.title}
+          </Text>
+
           <div className={styles.content}>
             <div className={`${styles.contentRow} ${styles.reverse}`}>
-              <div
-                className={`${styles.leftColumn} ${styles.stack}`}
-                data-reveal
-              >
+              <div className={styles.leftColumn} data-reveal>
                 <Text
                   as="p"
                   className={`${styles.lede} ${styles.measure}`}
@@ -123,7 +123,7 @@ export default function HomePage() {
               {courseSection.title}
             </Text>
           </div>
-          <div className={`${styles.listBlock} ${styles.stack}`}>
+          <div className={styles.leftColumn}>
             <Text>{courseSection.listTwo.list_name}</Text>
             <ul className={styles.list}>
               {[

@@ -1,6 +1,6 @@
 .title {
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .content {
@@ -20,6 +20,10 @@
 .stack {
   display: flex;
   flex-direction: column;
+}
+
+.par {
+  margin-top: 1rem !important;
 }
 
 .listBlock {

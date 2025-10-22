@@ -6,8 +6,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { navigationMenu, navigationLinks } from "@/constants/navigation";
-import { Container, Button } from "@/ui";
+import { Container, Button, Icon } from "@/ui";
 import { texts } from "@/constants";
+import { ArrowRight } from "@/ui/icons";
 
 export default function Header() {
   const pathname = usePathname();
@@ -69,7 +70,9 @@ export default function Header() {
                 </Link>
               ))}
               <Link href={contactSectionParams.link}>
-                <Button>{contactSectionParams.title}</Button>
+                <Button icon={<Icon as={ArrowRight} />}>
+                  {contactSectionParams.title}
+                </Button>
               </Link>
             </nav>
 

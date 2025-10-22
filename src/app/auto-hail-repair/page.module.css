@@ -17,6 +17,9 @@
   margin-top: 1.25rem;
 }
 
+.par {
+  margin-top: 1rem !important;
+}
 .stack {
   display: flex;
   flex-direction: column;
