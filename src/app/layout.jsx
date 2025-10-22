@@ -26,7 +26,7 @@ export const metadata = {
     siteName: "PDRACES",
     images: [
       {
-        url: "./favicon.ico",
+        url: "../../public/pdr-course-logo.jpg",
         width: 1200,
         height: 630,
         alt: "PDRACES - Paintless Dent Repair Specialists",
