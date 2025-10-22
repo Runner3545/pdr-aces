@@ -16,24 +16,6 @@
   }
 }
 
-@keyframes flickerPrimaryStrong {
-  0% {
-    background-color: var(--color-blue);
-  }
-  25% {
-    background-color: color-mix(in srgb, var(--color-blue) 90%, white 10%);
-  }
-  50% {
-    background-color: color-mix(in srgb, var(--color-blue) 80%, black 20%);
-  }
-  75% {
-    background-color: color-mix(in srgb, var(--color-blue) 95%, white 5%);
-  }
-  100% {
-    background-color: var(--color-blue);
-  }
-}
-
 .button {
   position: relative;
   display: inline-flex;
@@ -48,7 +30,8 @@
   border: none;
   cursor: pointer;
   overflow: hidden;
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease,
+    background-color 0.25s ease;
   text-align: center;
   user-select: none;
 }
@@ -65,7 +48,8 @@
 }
 
 .primary:hover:not(.disabled) {
-  animation: flickerPrimaryStrong 1s ease-in-out infinite;
+  animation: none;
+  background-color: var(--color-blue-dark);
 }
 
 .secondary {
