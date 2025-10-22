@@ -1,17 +1,14 @@
-/* Same rhythm as HomePage */
 .title {
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
-/* Vertical spacing flow */
 .content {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
-/* Row layout — same as Home’s .contentRow */
 .contentRow {
   display: grid;
   gap: 2.5rem;
@@ -20,18 +17,15 @@
   margin-top: 1.25rem;
 }
 
-/* Stack for grouped blocks */
 .stack {
   display: flex;
   flex-direction: column;
 }
 
-/* List block margin identical to Home */
 .listBlock {
   margin: 1rem 0;
 }
 
-/* List styling */
 .list {
   margin: 0.5rem 0 0 0;
   padding: 0;
@@ -50,13 +44,12 @@
   gap: 0.5rem;
 }
 
-.icon {
+.listItem .icon {
   color: var(--accent-color, #16a34a);
   flex-shrink: 0;
   margin-top: 2px;
 }
 
-/* Slider grid */
 .sliderContainer {
   display: grid;
   gap: 1rem;
@@ -64,7 +57,6 @@
   margin-top: 1.25rem;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .title {
     text-align: center;

@@ -20,7 +20,7 @@
 }
 
 .list li {
-  margin: 0.4rem 0; /* same as Home */
+  margin: 0.4rem 0;
   line-height: 1.6;
 }
 
@@ -30,7 +30,7 @@
   gap: 0.5rem;
 }
 
-.icon {
+.listItem .icon {
   color: var(--accent-color, #16a34a);
   flex-shrink: 0;
   margin-top: 2px;
@@ -77,12 +77,6 @@
 
 .ctaRow {
   margin-top: 0.5rem;
-}
-
-.icon {
-  color: var(--accent-color, #16a34a);
-  flex-shrink: 0;
-  margin-top: 2px;
 }
 
 @media (max-width: 768px) {
