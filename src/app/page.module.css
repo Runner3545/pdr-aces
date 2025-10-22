@@ -101,23 +101,17 @@
     margin-top: 1rem;
   }
 }
-.courseHeader {
+.courseWrapper {
   display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 0.5rem;
+  flex-direction: column;
 }
 
 .logo {
-  width: 4rem;
   height: auto;
   border-radius: 0.25rem;
   object-fit: contain;
+  margin: 1rem;
 }
 
 @media (max-width: 768px) {
-  .courseHeader {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
 }

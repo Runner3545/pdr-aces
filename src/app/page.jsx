@@ -110,39 +110,47 @@ export default function HomePage() {
 
       <Section id="section-pdr-course">
         <Container>
-          <div className={styles.courseHeader}>
-            <Image
-              src="/pdr-course-logo.jpg"
-              alt="PDR Course Logo"
-              width={100}
-              height={100}
-              className={styles.logo}
-              priority
-            />
-            <Text as="h2" className={styles.title} weight="bold">
-              {courseSection.title}
-            </Text>
-          </div>
-          <div className={styles.leftColumn}>
-            <Text>{courseSection.listTwo.list_name}</Text>
-            <ul className={styles.list}>
-              {[
-                courseSection.listTwo.list_textOne,
-                courseSection.listTwo.list_textTwo,
-                courseSection.listTwo.list_textThree,
-                courseSection.listTwo.list_textFour,
-              ].map((item, i) => (
-                <li key={i} className={styles.listItem}>
-                  <Icon
-                    as={CheckCircle}
-                    size="sm"
-                    strokeWidth={2}
-                    className={styles.icon}
+          <div className={styles.courseWrapper}>
+            <div>
+              <div className={styles.contentRow}>
+                <div className={styles.leftColumn}>
+                  <Text as="h2" className={styles.title} weight="bold">
+                    {courseSection.title}
+                  </Text>
+
+                  <Text>{courseSection.listTwo.list_name}</Text>
+                  <ul className={styles.list}>
+                    {[
+                      courseSection.listTwo.list_textOne,
+                      courseSection.listTwo.list_textTwo,
+                      courseSection.listTwo.list_textThree,
+                      courseSection.listTwo.list_textFour,
+                    ].map((item, i) => (
+                      <li key={i} className={styles.listItem}>
+                        <Icon
+                          as={CheckCircle}
+                          size="sm"
+                          strokeWidth={2}
+                          className={styles.icon}
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className={styles.logoWrapper}>
+                  <Image
+                    src="/pdr-course-logo.jpg"
+                    alt="PDR Course Logo"
+                    width={300}
+                    height={300}
+                    className={styles.logo}
+                    priority
                   />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className={`${styles.content} ${styles.centered}`}>
