@@ -1,23 +1,18 @@
 @keyframes flickerPrimary {
   0% {
-    opacity: 1;
-    filter: brightness(1);
+    background-color: var(--color-blue);
   }
-  15% {
-    opacity: 0.9;
-    filter: brightness(1.1);
+  25% {
+    background-color: color-mix(in srgb, var(--color-blue) 98%, white 2%);
   }
-  40% {
-    opacity: 0.95;
-    filter: brightness(0.95);
+  50% {
+    background-color: color-mix(in srgb, var(--color-blue) 96%, black 4%);
   }
-  65% {
-    opacity: 0.9;
-    filter: brightness(1.12);
+  75% {
+    background-color: color-mix(in srgb, var(--color-blue) 99%, white 1%);
   }
   100% {
-    opacity: 1;
-    filter: brightness(1);
+    background-color: var(--color-blue);
   }
 }
 
@@ -35,8 +30,7 @@
   border: none;
   cursor: pointer;
   overflow: hidden;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease,
-    transform 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
   text-align: center;
   user-select: none;
 }
@@ -49,10 +43,7 @@
 .primary {
   background: var(--color-blue);
   color: var(--text-inverse);
-}
-.primary:hover:not(.disabled) {
-  background: var(--color-blue-dark);
-  animation: flickerPrimary 0.4s ease-in-out;
+  animation: flickerPrimary 2s ease-in-out infinite;
 }
 
 .secondary {
@@ -60,6 +51,7 @@
   color: var(--color-blue);
   border: 1px solid var(--color-blue);
 }
+
 .secondary:hover:not(.disabled) {
   background: var(--color-blue-light);
 }
