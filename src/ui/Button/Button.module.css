@@ -1,4 +1,28 @@
+@keyframes flickerPrimary {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  15% {
+    opacity: 0.9;
+    filter: brightness(1.1);
+  }
+  40% {
+    opacity: 0.95;
+    filter: brightness(0.95);
+  }
+  65% {
+    opacity: 0.9;
+    filter: brightness(1.12);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
 .button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -10,27 +34,33 @@
   border-radius: var(--radius-md);
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.25s ease;
   text-align: center;
   user-select: none;
+}
+
+.button:hover:not(.disabled) {
+  box-shadow: var(--shadow-soft);
+  transform: translateX(3px);
 }
 
 .primary {
   background: var(--color-blue);
   color: var(--text-inverse);
 }
-
-.primary:hover {
+.primary:hover:not(.disabled) {
   background: var(--color-blue-dark);
+  animation: flickerPrimary 0.4s ease-in-out;
 }
 
 .secondary {
-  background: var(--bg-primary);
+  background: #fff;
   color: var(--color-blue);
   border: 1px solid var(--color-blue);
 }
-
-.secondary:hover {
+.secondary:hover:not(.disabled) {
   background: var(--color-blue-light);
 }
 
@@ -58,10 +88,4 @@
   align-items: center;
   justify-content: center;
   line-height: 0;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .button:hover:not(.disabled) {
-    box-shadow: var(--shadow-soft);
-  }
 }
