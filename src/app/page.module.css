@@ -101,6 +101,90 @@
   margin: 0;
 }
 
+/* Offset для якорной прокрутки с учётом фикс. шапки */
+#section-contact-us {
+  scroll-margin-top: 88px;
+}
+
+/* Обёртка */
+.contactSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* Заголовки */
+.contactTitle {
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.contactSubtitle {
+  margin: 0;
+}
+
+/* Сетка карточек */
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Карточка контакта */
+.contactCard {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.125rem;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.contactCard:hover,
+.contactCard:focus-visible {
+  border-color: var(--color-blue);
+  box-shadow: var(--shadow-strong);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* Иконка (если нет Icon-компонента — используем эмодзи как fallback) */
+.contactIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--bg-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+/* Текстовые части */
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.contactValue {
+  color: var(--text-primary);
+}
+
 @media (min-width: 768px) {
   .logo {
     margin: 1rem;

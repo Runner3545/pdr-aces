@@ -211,6 +211,62 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      <Section id="section-contact-us">
+        <Container>
+          <div className={styles.contactSection}>
+            <Text as="h2" weight="bold" className={styles.contactTitle}>
+              Contact Us
+            </Text>
+
+            <Text as="p" color="secondary" className={styles.contactSubtitle}>
+              Prefer a quick call or message? Reach out directly — we’ll get
+              back fast.
+            </Text>
+
+            <div className={styles.contactGrid}>
+              <a
+                href="tel:+16199186088"
+                className={styles.contactCard}
+                aria-label="Call or text +1 619 918 6088"
+              >
+                {/* Если есть иконки Phone/Mail в "@/ui/icons", используйте их */}
+                {/* <Icon as={Phone} className={styles.contactIcon} /> */}
+                <div className={styles.contactIcon} aria-hidden="true">
+                  📞
+                </div>
+                <div className={styles.contactInfo}>
+                  <Text as="p" weight="bold">
+                    Call or Text
+                  </Text>
+                  <Text as="p" className={styles.contactValue}>
+                    +1 (619) 918-6088
+                  </Text>
+                </div>
+              </a>
+
+              <a
+                href="mailto:autopdraces@gmail.com"
+                className={styles.contactCard}
+                aria-label="Send email to autopdraces@gmail.com"
+              >
+                {/* <Icon as={Mail} className={styles.contactIcon} /> */}
+                <div className={styles.contactIcon} aria-hidden="true">
+                  ✉️
+                </div>
+                <div className={styles.contactInfo}>
+                  <Text as="p" weight="bold">
+                    Email
+                  </Text>
+                  <Text as="p" className={styles.contactValue}>
+                    autopdraces@gmail.com
+                  </Text>
+                </div>
+              </a>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       <Section id="section-contact">
         <Container>
           <FlipIn direction="top" trigger="scroll">
