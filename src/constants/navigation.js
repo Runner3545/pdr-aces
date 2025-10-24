@@ -1,8 +1,8 @@
 export const navigationLinks = {
   home: "/",
-  paintlessDent: "/paintless-dent/",
-  autoHailRepair: "/auto-hail-repair/",
-  pdrCourse: "/pdr-course/",
+  paintlessDent: "/paintless-dent",
+  autoHailRepair: "/auto-hail-repair",
+  pdrCourse: "/pdr-course",
 };
 
 export const navigationMenu = [
@@ -22,5 +22,4 @@ export const navigationMenu = [
     title: "Paintless Dent Repair",
     link: navigationLinks.paintlessDent,
   },
-
 ];

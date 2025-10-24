@@ -2,44 +2,33 @@
 
 import { useRef, useEffect, useMemo, useState } from "react";
 
-/* Lazy GSAP only for desktop branch */
 let gsap, ScrollTrigger, useGSAP;
 try {
   ({ default: gsap } = require("gsap"));
   ({ ScrollTrigger } = require("gsap/ScrollTrigger"));
   ({ useGSAP } = require("@gsap/react"));
   gsap?.registerPlugin?.(ScrollTrigger);
-} catch {
-  /* noop on mobile/base */
-}
+} catch {}
 
-/* =========================
-   Base (no animation)
-   ========================= */
 export function SlideInBase({
   children,
   as = "div",
   className = "",
+  style = {},
   ...props
 }) {
   const Component = as;
   return (
-    <Component className={className} {...props}>
+    <Component className={className} style={style} {...props}>
       {children}
     </Component>
   );
 }
 
-/* =========================
-   Mobile (no animation)
-   ========================= */
 export function SlideInMobile(props) {
   return <SlideInBase {...props} />;
 }
 
-/* =========================
-   Desktop (GSAP animations)
-   ========================= */
 export function SlideInDesktop({
   children,
   as = "div",
@@ -52,19 +41,19 @@ export function SlideInDesktop({
   distance = 100,
   opacity = 1,
   className = "",
+  style = {},
   ...props
 }) {
   const Component = as;
   const scope = useRef(null);
 
-  // pre-render element so GSAP can target it
   const rendered = (
-    <Component ref={scope} className={className} {...props}>
+    <Component ref={scope} className={className} style={style} {...props}>
       {children}
     </Component>
   );
 
-  if (!gsap || !useGSAP) return rendered; // safety net
+  if (!gsap || !useGSAP) return rendered;
 
   const isReduced = useMemo(() => {
     if (typeof window === "undefined" || !window.matchMedia) return false;
@@ -82,7 +71,6 @@ export function SlideInDesktop({
 
       const xFrom = from === "left" ? -distance : distance;
 
-      // initial state
       gsap.set(scope.current, {
         x: xFrom,
         opacity: 0,
@@ -105,14 +93,11 @@ export function SlideInDesktop({
         return;
       }
 
-      // scroll trigger
       const st = ScrollTrigger.create({
         trigger: scope.current,
         start: "top 85%",
         once,
         onEnter: animateIn,
-        // If you want reverse on scroll-up, uncomment:
-        // onLeaveBack: () => gsap.set(scope.current, { x: xFrom, opacity: 0 }),
       });
 
       return () => st.kill();
@@ -136,20 +121,15 @@ export function SlideInDesktop({
   return rendered;
 }
 
-/* =========================
-   Wrapper selector (SSR-safe)
-   ========================= */
 export default function SlideIn(props) {
   const [mode, setMode] = useState("base"); // 'base' | 'mobile' | 'desktop'
 
   useEffect(() => {
-    // 1) Respect reduced motion: no animation at all
     const reduced = window.matchMedia?.(
       "(prefers-reduced-motion: reduce)"
     )?.matches;
     if (reduced) return setMode("base");
 
-    // 2) Mobile detection (narrow or coarse pointer) → no animation
     const isMobile =
       window.matchMedia?.("(max-width: 768px)")?.matches ||
       window.matchMedia?.("(pointer: coarse)")?.matches;
@@ -159,5 +139,5 @@ export default function SlideIn(props) {
 
   if (mode === "desktop") return <SlideInDesktop {...props} />;
   if (mode === "mobile") return <SlideInMobile {...props} />;
-  return <SlideInBase {...props} />; // during SSR / reduced motion
+  return <SlideInBase {...props} />;
 }

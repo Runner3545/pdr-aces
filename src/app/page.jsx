@@ -19,6 +19,13 @@ import { navigationLinks } from "@/constants/navigation";
 import { ContactForm, Hero } from "@/components";
 import clsx from "clsx";
 
+const sliderWrapperSlideInStyles = {
+  minWidth: 0,
+  width: "100%",
+  display: "block",
+  flex: "1 1 100%",
+};
+
 export default function HomePage() {
   const { paintlessDentSection, autoHailRepairSection, courseSection } = texts;
 
@@ -137,7 +144,11 @@ export default function HomePage() {
               </div>
 
               <div className={styles.rightColumn}>
-                <SlideIn from="left" trigger="scroll">
+                <SlideIn
+                  from="left"
+                  trigger="scroll"
+                  style={sliderWrapperSlideInStyles}
+                >
                   <Slider
                     before="/autoHailRepair-before.jpg"
                     after="/autoHailRepair-after.jpg"
@@ -194,7 +205,11 @@ export default function HomePage() {
               </div>
 
               <div className={clsx(styles.rightColumn, styles.reversed)}>
-                <SlideIn from="right" trigger="scroll">
+                <SlideIn
+                  from="right"
+                  trigger="scroll"
+                  style={sliderWrapperSlideInStyles}
+                >
                   <Slider
                     before="/paintlessDentRepair-before.jpg"
                     after="/paintlessDentRepair-after.jpg"
@@ -226,8 +241,6 @@ export default function HomePage() {
                 className={styles.contactCard}
                 aria-label="Call or text +1 619 918 6088"
               >
-                {/* Если есть иконки Phone/Mail в "@/ui/icons", используйте их */}
-                {/* <Icon as={Phone} className={styles.contactIcon} /> */}
                 <div className={styles.contactIcon} aria-hidden="true">
                   📞
                 </div>
@@ -246,7 +259,6 @@ export default function HomePage() {
                 className={styles.contactCard}
                 aria-label="Send email to autopdraces@gmail.com"
               >
-                {/* <Icon as={Mail} className={styles.contactIcon} /> */}
                 <div className={styles.contactIcon} aria-hidden="true">
                   ✉️
                 </div>

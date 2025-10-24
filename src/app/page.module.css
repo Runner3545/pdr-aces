@@ -1,7 +1,7 @@
 .title {
   color: var(--text-primary);
   margin-bottom: 0.75rem;
-  text-align: center; /* mobile-first */
+  text-align: center;
 }
 
 .content {
@@ -40,7 +40,7 @@
 
 .contentRow {
   display: flex;
-  flex-direction: column-reverse; /* mobile-first */
+  flex-direction: column-reverse;
   align-items: stretch;
   justify-content: space-between;
   gap: 2.5rem;
@@ -64,7 +64,6 @@
   flex: 1;
   min-width: 100%;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   margin-top: 1rem;
 }
@@ -101,12 +100,10 @@
   margin: 0;
 }
 
-/* Offset для якорной прокрутки с учётом фикс. шапки */
 #section-contact-us {
   scroll-margin-top: 88px;
 }
 
-/* Обёртка */
 .contactSection {
   display: flex;
   flex-direction: column;
@@ -114,7 +111,6 @@
   margin-top: 2rem;
 }
 
-/* Заголовки */
 .contactTitle {
   color: var(--text-primary);
   margin-bottom: 0.25rem;
@@ -124,7 +120,6 @@
   margin: 0;
 }
 
-/* Сетка карточек */
 .contactGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(260px, 1fr));
@@ -138,7 +133,6 @@
   }
 }
 
-/* Карточка контакта */
 .contactCard {
   display: flex;
   align-items: center;
@@ -161,7 +155,6 @@
   outline: none;
 }
 
-/* Иконка (если нет Icon-компонента — используем эмодзи как fallback) */
 .contactIcon {
   width: 40px;
   height: 40px;
@@ -174,7 +167,6 @@
   flex-shrink: 0;
 }
 
-/* Текстовые части */
 .contactInfo {
   display: flex;
   flex-direction: column;
