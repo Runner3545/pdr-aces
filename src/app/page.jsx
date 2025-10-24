@@ -19,13 +19,6 @@ import { navigationLinks } from "@/constants/navigation";
 import { ContactForm, Hero } from "@/components";
 import clsx from "clsx";
 
-const sliderWrapperSlideInStyles = {
-  minWidth: 0,
-  width: "100%",
-  display: "block",
-  flex: "1 1 100%",
-};
-
 export default function HomePage() {
   const { paintlessDentSection, autoHailRepairSection, courseSection } = texts;
 
@@ -144,11 +137,7 @@ export default function HomePage() {
               </div>
 
               <div className={styles.rightColumn}>
-                <SlideIn
-                  from="left"
-                  trigger="scroll"
-                  style={sliderWrapperSlideInStyles}
-                >
+                <SlideIn from="left" trigger="scroll">
                   <Slider
                     before="/autoHailRepair-before.jpg"
                     after="/autoHailRepair-after.jpg"
@@ -205,11 +194,7 @@ export default function HomePage() {
               </div>
 
               <div className={clsx(styles.rightColumn, styles.reversed)}>
-                <SlideIn
-                  from="right"
-                  trigger="scroll"
-                  style={sliderWrapperSlideInStyles}
-                >
+                <SlideIn from="right" trigger="scroll">
                   <Slider
                     before="/paintlessDentRepair-before.jpg"
                     after="/paintlessDentRepair-after.jpg"
@@ -237,10 +222,12 @@ export default function HomePage() {
 
             <div className={styles.contactGrid}>
               <a
-                href="tel:+16199186088"
+                href="tel:+17204194566"
                 className={styles.contactCard}
-                aria-label="Call or text +1 619 918 6088"
+                aria-label="Call or text +1 720 419 4566"
               >
+                {/* Если есть иконки Phone/Mail в "@/ui/icons", используйте их */}
+                {/* <Icon as={Phone} className={styles.contactIcon} /> */}
                 <div className={styles.contactIcon} aria-hidden="true">
                   📞
                 </div>
@@ -249,7 +236,7 @@ export default function HomePage() {
                     Call or Text
                   </Text>
                   <Text as="p" className={styles.contactValue}>
-                    +1 (619) 918-6088
+                    +1 (720)419-4566
                   </Text>
                 </div>
               </a>
@@ -259,6 +246,7 @@ export default function HomePage() {
                 className={styles.contactCard}
                 aria-label="Send email to autopdraces@gmail.com"
               >
+                {/* <Icon as={Mail} className={styles.contactIcon} /> */}
                 <div className={styles.contactIcon} aria-hidden="true">
                   ✉️
                 </div>
