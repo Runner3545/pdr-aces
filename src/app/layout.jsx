@@ -15,6 +15,9 @@ const poppins = Poppins({
 });
 
 export const metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://pdr-aces.vercel.app"
+  ),
   title: "PDRACES",
   description: "Paintless Dent Repair Specialists",
   icons: {
