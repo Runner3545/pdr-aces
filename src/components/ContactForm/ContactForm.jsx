@@ -27,10 +27,10 @@ export default function ContactForm({
   } = useForm({
     resolver: yupResolver(contactSchema),
     mode: "onTouched",
-    defaultValues: { name: "", phone: "", description: "" },
+    defaultValues: { name: "", email: "", phone: "", description: "" },
   });
 
-  const onSubmit = async ({ name, phone, description }) => {
+  const onSubmit = async ({ name, email, phone, description }) => {
     const res = await fetch("/api/contact", {
       method: "POST",
       headers: {
@@ -38,6 +38,7 @@ export default function ContactForm({
       },
       body: JSON.stringify({
         name,
+        email,
         phone,
         description,
         type,
@@ -50,12 +51,13 @@ export default function ContactForm({
       console.error("Error:", data);
       setIsSuccessful(false);
       alert("Failed to send request");
+      return;
     }
 
     setIsSuccessful(true);
-
     reset();
   };
+
   return (
     <div className={styles.wrapper}>
       <Text as="h2" weight="bold" className={styles.wrapper__title}>
@@ -94,6 +96,7 @@ export default function ContactForm({
                 </p>
               )}
             </div>
+
             <div className={styles.field}>
               <Label htmlFor="phone" required>
                 {t.phoneLabel}
@@ -113,8 +116,32 @@ export default function ContactForm({
                   />
                 )}
               />
+              {errors.phone && (
+                <p className={styles.errorText} role="alert">
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
+
+            <div className={styles.field}>
+              <Label htmlFor="email">{t.emailLabel}</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder={t.emailPlaceholder}
+                autoComplete="email"
+                aria-invalid={!!errors.email || undefined}
+                {...register("email")}
+                error={errors.email?.message}
+              />
+              {errors.email && (
+                <p className={styles.errorText} role="alert">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
           </fieldset>
+
           <div className={styles.field}>
             <Label htmlFor="description">
               {descriptionLabel || t.descriptionLabel}
@@ -132,6 +159,7 @@ export default function ContactForm({
               </p>
             )}
           </div>
+
           <div className={styles.actions}>
             <Button
               type="submit"

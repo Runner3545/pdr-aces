@@ -20,9 +20,9 @@
 .fieldset {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 1rem;
 }
 
 .field {
@@ -74,7 +74,7 @@
   }
 
   .fieldset {
-    flex-direction: row;
+    gap: 1.25rem;
   }
 
   .actions__submit {

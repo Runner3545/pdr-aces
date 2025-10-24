@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 import * as yup from "yup";
 import { NextResponse } from "next/server";
-import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 export const runtime = "nodejs";
 
@@ -22,18 +21,22 @@ const schema = yup
       .trim()
       .min(2, "Name is required")
       .max(120, "Name too long")
-      .required(),
-    phone: yup.string().trim().required(),
-    // .matches(/^\d{10,15}$/, "") // only digits, 10–15 length
-    // .test("is-valid-phone", "", (val) => {
-    //   if (!val) return false;
-    //   try {
-    //     const parsed = parsePhoneNumberFromString("+" + val); // prepend "+" for parsing
-    //     return !!parsed && parsed.isValid();
-    //   } catch {
-    //     return false;
-    //   }
-    // }),
+      .required("Name is required"),
+    email: yup
+      .string()
+      .trim()
+      .email("Email is invalid")
+      .max(254, "Email too long")
+      .optional(),
+    phone: yup
+      .string()
+      .required("Phone is required")
+      .transform((v) => (v ? String(v).replace(/\D+/g, "") : v))
+      .test("digits-9-15", "Phone is invalid", (val) => {
+        if (!val) return false;
+        const n = String(val).length;
+        return n >= 9 && n <= 15;
+      }),
     description: yup
       .string()
       .trim()
@@ -51,15 +54,18 @@ const escapeHtml = (s = "") =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-const toText = ({ name, phone, type }) =>
+const toText = ({ name, email, phone, type }) =>
   [
     `New ${type === "default" ? "Contact" : "Course"} Request`,
     ``,
     `Name: ${name}`,
+    email ? `Email: ${email}` : null,
     `Phone: ${phone}`,
-  ].join("\n");
+  ]
+    .filter(Boolean)
+    .join("\n");
 
-const toHtml = ({ name, phone, description, type }) => `
+const toHtml = ({ name, email, phone, description, type }) => `
   <div style="font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5;color:#111">
     <h3 style="margin:0 0 10px 0;">New ${
       type === "default" ? "Contact" : "Course"
@@ -78,6 +84,16 @@ const toHtml = ({ name, phone, description, type }) => `
             name
           )}</td>
         </tr>
+        ${
+          email
+            ? `<tr>
+                 <td style="padding:8px 12px;border:1px solid #eee;background:#f8fafc;">Email</td>
+                 <td style="padding:8px 12px;border:1px solid #eee;">${escapeHtml(
+                   email
+                 )}</td>
+               </tr>`
+            : ""
+        }
         <tr>
           <td style="padding:8px 12px;border:1px solid #eee;background:#f8fafc;">Phone</td>
           <td style="padding:8px 12px;border:1px solid #eee;">${escapeHtml(
@@ -123,27 +139,25 @@ export async function POST(req) {
       );
     }
 
-    const { name, phone, description, type } = data;
+    const { name, email, phone, description, type } = data;
 
     const senderAddress = process.env.REFERRAL_EMAIL_SENDER_ADDRESS;
     const senderAppPass = process.env.REFERRAL_EMAIL_SENDER_APP_PASS;
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
-      auth: {
-        user: senderAddress,
-        pass: senderAppPass,
-      },
+      auth: { user: senderAddress, pass: senderAppPass },
     });
 
     const mailOptions = {
       from: senderAddress,
       to: senderAddress,
+      ...(email ? { replyTo: email } : {}), // only set if provided
       subject: `New ${
         type === "default" ? "Contact" : "Course"
       } request: ${name}`,
-      text: toText({ name, phone, type }),
-      html: toHtml({ name, phone, description, type }),
+      text: toText({ name, email, phone, type }),
+      html: toHtml({ name, email, phone, description, type }),
       headers: { "X-Source": "Website Contact" },
     };
 

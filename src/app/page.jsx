@@ -44,7 +44,6 @@ export default function HomePage() {
                     <ul className={styles.list}>
                       {[
                         courseSection.listTwo.list_textOne,
-                        courseSection.listTwo.list_textTwo,
                         courseSection.listTwo.list_textThree,
                         courseSection.listTwo.list_textFour,
                       ].map((item, i) => (

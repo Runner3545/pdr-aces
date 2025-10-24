@@ -64,7 +64,7 @@ const texts = {
     },
   },
   courseSection: {
-    title: "Learn More About the PDR Course",
+    title: "Learn the Art of Paintless Dent Repair in Denver",
     paragraphOne:
       "PDR stands for Paintless Dent Repair - one of the most in-demand skills in today’s automotive industry. It’s not easy to master, but once you do, it can completely change your future.",
     paragraphTwo:
@@ -103,13 +103,20 @@ const texts = {
       "Want to learn Paintless Dent Repair (PDR) and start a new career? Fill out the form below - we’ll send you course details, pricing, and enrollment options, and answer any questions you’ve got.",
     description:
       "Hail damage? Door dings? We’ve got you covered. Fill out the quick form below our team will review your info and get back to you fast with a free, no-obligation quote.",
+
+    // Fields
     nameLabel: "Your Name",
     namePlaceholder: "Your name",
+
+    emailLabel: "Email Address",
+    emailPlaceholder: "example@email.com",
+
     phoneLabel: "Phone Number",
     phonePlaceholder: "",
 
     descriptionLabel: "Describe the Damage:",
     descriptionPlaceholder: `Example: “Hail damage on hood and roof” or “Door ding on driver side.”`,
+
     buttonText: "Get your free estimate",
 
     descriptionLabelCourse: "Tell us about yourself:",
@@ -119,11 +126,14 @@ const texts = {
 
     buttonSubmitting: "Submitting...",
     successText: "Thank you! Your message was sent.",
+
     errors: {
       nameRequired: "Please enter your name.",
       nameMin: "Name must be at least 2 characters.",
+      emailInvalid: "Please enter a valid email address.",
+      emailTooLong: "Email is too long.",
       phoneRequired: "Please enter your phone number.",
-      phoneInvalid: "Please enter a valid email address.",
+      phoneInvalid: "Please enter a valid phone number.",
       descriptionTooLong: "Description is too long.",
     },
   },
