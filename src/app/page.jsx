@@ -210,55 +210,84 @@ export default function HomePage() {
       <Section id="section-contact-us">
         <Container>
           <div className={styles.contactSection}>
-            <Text as="h2" weight="bold" className={styles.contactTitle}>
+            <Text
+              as="h2"
+              weight="bold"
+              className={styles.contactTitle}
+              animate="words"
+            >
               Contact Us
             </Text>
 
-            <Text as="p" color="secondary" className={styles.contactSubtitle}>
+            <Text
+              as="p"
+              color="secondary"
+              className={styles.contactSubtitle}
+              animate="words"
+            >
               Prefer a quick call or message? Reach out directly — we’ll get
               back fast.
             </Text>
 
-            <div className={styles.contactGrid}>
-              <a
-                href="tel:+17204194566"
-                className={styles.contactCard}
-                aria-label="Call or text +1 720 419 4566"
-              >
-                {/* Если есть иконки Phone/Mail в "@/ui/icons", используйте их */}
-                {/* <Icon as={Phone} className={styles.contactIcon} /> */}
-                <div className={styles.contactIcon} aria-hidden="true">
-                  📞
-                </div>
-                <div className={styles.contactInfo}>
-                  <Text as="p" weight="bold">
-                    Call or Text
-                  </Text>
-                  <Text as="p" className={styles.contactValue}>
-                    +1 (720)419-4566
-                  </Text>
-                </div>
-              </a>
+            <SlideIn from="right" trigger="scroll">
+              <div className={styles.contactGrid}>
+                <a
+                  href="tel:+17204194566"
+                  className={styles.contactCard}
+                  aria-label="Call or text +1 720 419 4566"
+                >
+                  <div className={styles.contactIcon} aria-hidden="true">
+                    📞
+                  </div>
+                  <div className={styles.contactInfo}>
+                    <Text as="p" weight="bold">
+                      Call or Text
+                    </Text>
+                    <Text as="p" className={styles.contactValue}>
+                      +1 (720)419-4566
+                    </Text>
+                  </div>
+                </a>
 
-              <a
-                href="mailto:autopdraces@gmail.com"
-                className={styles.contactCard}
-                aria-label="Send email to autopdraces@gmail.com"
-              >
-                {/* <Icon as={Mail} className={styles.contactIcon} /> */}
-                <div className={styles.contactIcon} aria-hidden="true">
-                  ✉️
-                </div>
-                <div className={styles.contactInfo}>
-                  <Text as="p" weight="bold">
-                    Email
-                  </Text>
-                  <Text as="p" className={styles.contactValue}>
-                    autopdraces@gmail.com
-                  </Text>
-                </div>
-              </a>
-            </div>
+                <a
+                  href="mailto:autopdraces@gmail.com"
+                  className={styles.contactCard}
+                  aria-label="Send email to autopdraces@gmail.com"
+                >
+                  <div className={styles.contactIcon} aria-hidden="true">
+                    ✉️
+                  </div>
+                  <div className={styles.contactInfo}>
+                    <Text as="p" weight="bold">
+                      Email
+                    </Text>
+                    <Text as="p" className={styles.contactValue}>
+                      autopdraces@gmail.com
+                    </Text>
+                  </div>
+                </a>
+
+                <a
+                  href="https://m.me/justnick19"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contactCard}
+                  aria-label="Chat via Facebook Messenger"
+                >
+                  <div className={styles.contactIcon} aria-hidden="true">
+                    💬
+                  </div>
+                  <div className={styles.contactInfo}>
+                    <Text as="p" weight="bold">
+                      Messenger
+                    </Text>
+                    <Text as="p" className={styles.contactValue}>
+                      Message Nick
+                    </Text>
+                  </div>
+                </a>
+              </div>
+            </SlideIn>
           </div>
         </Container>
       </Section>
