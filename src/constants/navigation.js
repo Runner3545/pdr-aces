@@ -11,15 +11,16 @@ export const navigationMenu = [
     link: navigationLinks.home,
   },
   {
-    title: "Paintless Dent Repair",
-    link: navigationLinks.paintlessDent,
+    title: "PDR Course",
+    link: navigationLinks.pdrCourse,
   },
   {
     title: "Auto Hail Repair",
     link: navigationLinks.autoHailRepair,
   },
   {
-    title: "PDR Course",
-    link: navigationLinks.pdrCourse,
+    title: "Paintless Dent Repair",
+    link: navigationLinks.paintlessDent,
   },
+
 ];

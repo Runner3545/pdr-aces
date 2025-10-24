@@ -24,64 +24,75 @@ export default function HomePage() {
 
   return (
     <>
-      <Hero />
-
-      <Section id="section-paintless-dent-repair">
+      <Section id="section-pdr-course">
         <Container>
-          <Text
-            as="h2"
-            className={styles.title}
-            weight="bold"
-            animate="words"
-            trigger="scroll"
-          >
-            {paintlessDentSection.title}
-          </Text>
-
-          <div className={styles.content}>
-            <div className={styles.contentRow}>
-              <div className={styles.leftColumn}>
-                <SlideIn from="left" trigger="scroll">
+          <div className={styles.courseWrapper}>
+            <div>
+              <div className={styles.contentRow}>
+                <div className={styles.leftColumn}>
                   <Text
-                    as="p"
-                    className={`${styles.lede} ${styles.measure}`}
-                    weight="medium"
+                    as="h2"
+                    className={styles.title}
+                    weight="bold"
+                    animate="words"
+                    trigger="scroll"
                   >
-                    {paintlessDentSection.paragraphOne}
+                    {courseSection.title}
                   </Text>
-                  <Text as="p" className={styles.measure}>
-                    {paintlessDentSection.paragraphTwo}
-                  </Text>
-                </SlideIn>
 
-                <SlideIn from="left" trigger="scroll">
-                  <div className={styles.ctaRow}>
-                    <Link href={navigationLinks.paintlessDent}>
-                      <Button
-                        icon={<Icon as={ArrowRight} />}
-                        variant="secondary"
-                      >
-                        {texts.default.button_link_title}
-                      </Button>
-                    </Link>
-                  </div>
-                </SlideIn>
-              </div>
+                  <SlideIn from="left" trigger="scroll">
+                    <ul className={styles.list}>
+                      {[
+                        courseSection.listTwo.list_textOne,
+                        courseSection.listTwo.list_textTwo,
+                        courseSection.listTwo.list_textThree,
+                        courseSection.listTwo.list_textFour,
+                      ].map((item, i) => (
+                        <li key={i} className={styles.listItem}>
+                          <Icon
+                            as={CheckCircle}
+                            size="sm"
+                            strokeWidth={2}
+                            className={styles.icon}
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-              <div className={clsx(styles.rightColumn, styles.reversed)}>
-                <SlideIn from="right" trigger="scroll">
-                  <Slider
-                    before="/paintlessDentRepair-before.jpg"
-                    after="/paintlessDentRepair-after.jpg"
-                    altBefore="Door dent before repair"
-                    altAfter="Door panel after paintless dent repair—like new"
-                  />
-                </SlideIn>
+                    <div className={clsx(styles.ctaRow, styles.spacingTop)}>
+                      <Link href={navigationLinks.pdrCourse}>
+                        <Button
+                          icon={<Icon as={ArrowRight} />}
+                          variant="secondary"
+                          style={{ "--delay": "120ms" }}
+                        >
+                          {texts.default.button_link_title}
+                        </Button>
+                      </Link>
+                    </div>
+                  </SlideIn>
+                </div>
+
+                <div className={styles.logoWrapper}>
+                  <SlideIn from="right" trigger="scroll">
+                    <Image
+                      src="/pdr-course-logo.jpg"
+                      alt="PDR Course Logo"
+                      width={400}
+                      height={400}
+                      className={styles.logo}
+                      priority
+                    />
+                  </SlideIn>
+                </div>
               </div>
             </div>
           </div>
         </Container>
       </Section>
+
+      <Hero />
 
       <Section id="section-auto-hail-repair">
         <Container>
@@ -140,71 +151,57 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section id="section-pdr-course">
+      <Section id="section-paintless-dent-repair">
         <Container>
-          <div className={styles.courseWrapper}>
-            <div>
-              <div className={styles.contentRow}>
-                <div className={styles.leftColumn}>
+          <Text
+            as="h2"
+            className={styles.title}
+            weight="bold"
+            animate="words"
+            trigger="scroll"
+          >
+            {paintlessDentSection.title}
+          </Text>
+
+          <div className={styles.content}>
+            <div className={styles.contentRow}>
+              <div className={styles.leftColumn}>
+                <SlideIn from="left" trigger="scroll">
                   <Text
-                    as="h2"
-                    className={styles.title}
-                    weight="bold"
-                    animate="words"
-                    trigger="scroll"
+                    as="p"
+                    className={`${styles.lede} ${styles.measure}`}
+                    weight="medium"
                   >
-                    {courseSection.title}
+                    {paintlessDentSection.paragraphOne}
                   </Text>
+                  <Text as="p" className={styles.measure}>
+                    {paintlessDentSection.paragraphTwo}
+                  </Text>
+                </SlideIn>
 
-                  <SlideIn from="left" trigger="scroll">
-                    <Text as="p" className={styles.measure}>
-                      {courseSection.listTwo.list_name}
-                    </Text>
-                    <ul className={styles.list}>
-                      {[
-                        courseSection.listTwo.list_textOne,
-                        courseSection.listTwo.list_textTwo,
-                        courseSection.listTwo.list_textThree,
-                        courseSection.listTwo.list_textFour,
-                      ].map((item, i) => (
-                        <li key={i} className={styles.listItem}>
-                          <Icon
-                            as={CheckCircle}
-                            size="sm"
-                            strokeWidth={2}
-                            className={styles.icon}
-                          />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                <SlideIn from="left" trigger="scroll">
+                  <div className={styles.ctaRow}>
+                    <Link href={navigationLinks.paintlessDent}>
+                      <Button
+                        icon={<Icon as={ArrowRight} />}
+                        variant="secondary"
+                      >
+                        {texts.default.button_link_title}
+                      </Button>
+                    </Link>
+                  </div>
+                </SlideIn>
+              </div>
 
-                    <div className={clsx(styles.ctaRow, styles.spacingTop)}>
-                      <Link href={navigationLinks.pdrCourse}>
-                        <Button
-                          icon={<Icon as={ArrowRight} />}
-                          variant="secondary"
-                          style={{ "--delay": "120ms" }}
-                        >
-                          {texts.default.button_link_title}
-                        </Button>
-                      </Link>
-                    </div>
-                  </SlideIn>
-                </div>
-
-                <div className={styles.logoWrapper}>
-                  <SlideIn from="right" trigger="scroll">
-                    <Image
-                      src="/pdr-course-logo.jpg"
-                      alt="PDR Course Logo"
-                      width={400}
-                      height={400}
-                      className={styles.logo}
-                      priority
-                    />
-                  </SlideIn>
-                </div>
+              <div className={clsx(styles.rightColumn, styles.reversed)}>
+                <SlideIn from="right" trigger="scroll">
+                  <Slider
+                    before="/paintlessDentRepair-before.jpg"
+                    after="/paintlessDentRepair-after.jpg"
+                    altBefore="Door dent before repair"
+                    altAfter="Door panel after paintless dent repair—like new"
+                  />
+                </SlideIn>
               </div>
             </div>
           </div>

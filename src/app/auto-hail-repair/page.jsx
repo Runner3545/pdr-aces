@@ -110,6 +110,12 @@ export default function AutoHailRepairPage() {
               altBefore="Car dent before repair"
               altAfter="Car after paintless dent repair"
             />
+                <Slider
+                    before="/autoHailRepair-before.jpg"
+                    after="/autoHailRepair-after.jpg"
+                    altBefore="Roof and hood with hail dents"
+                    altAfter="Panels restored after hail repair"
+                  />
           </div>
         </div>
       </Container>
