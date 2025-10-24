@@ -18,6 +18,7 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   column-gap: 1.25rem;
+  padding-left: 1rem;
 
   /* No extra paddings here; Container handles symmetric padding */
   position: relative; /* local stacking context */
@@ -201,6 +202,9 @@
 
 /* Desktop */
 @media (min-width: 960px) {
+  .inner {
+    padding-left: 0;
+  }
   .nav {
     display: flex;
   } /* middle column visible */
