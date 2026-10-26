@@ -1,16 +1,23 @@
-import { Poppins } from "next/font/google";
-import { Footer, Header } from "@/components";
-import { Background } from "@/ui";
+import { Manrope, Montserrat } from "next/font/google";
+import Script from "next/script";
+import { Footer } from "@/components/site/Footer";
+import { Header } from "@/components/site/Header";
+import { SiteEffects } from "@/components/site/SiteEffects";
 
-import "../styles/variables.css";
-import "../styles/reset.css";
-import "../styles/globals.css";
-import "../styles/paged-scroller.css";
+import "../styles/site.css";
 
-const poppins = Poppins({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-poppins",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -18,21 +25,23 @@ export const metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://pdr-aces.vercel.app"
   ),
-  title: "PDRACES",
-  description: "Paintless Dent Repair Specialists",
+  title: {
+    default: "PDR Aces Academy | Paintless Dent Repair Training",
+    template: "%s",
+  },
+  description:
+    "Hands-on paintless dent repair training in Denver, Colorado. Learn PDR in 2 months.",
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "PDRACES",
-    description: "Paintless Dent Repair Specialists",
-    siteName: "PDRACES",
+    siteName: "PDR Aces Academy",
     images: [
       {
-        url: "/pdr-course-logo.jpg",
-        width: 400,
-        height: 400,
-        alt: "PDRACES - Paintless Dent Repair Specialists",
+        url: "/assets/hero-banner.jpg",
+        width: 1670,
+        height: 844,
+        alt: "PDR Aces Academy",
       },
     ],
     locale: "en_US",
@@ -42,14 +51,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={poppins.variable}>
-        <Background />
+    <html
+      lang="en"
+      className={`no-js ${manrope.variable} ${montserrat.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
+        <Script id="js-flag" strategy="beforeInteractive">
+          {`document.documentElement.classList.replace("no-js","js")`}
+        </Script>
         <Header />
-
         {children}
-
         <Footer />
+        <SiteEffects />
       </body>
     </html>
   );
